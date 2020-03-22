@@ -1,0 +1,264 @@
+/*********************************/
+@media only screen and (min-width: 786px) {
+
+  .no-mobile{
+    display:block;
+  }
+  .card{
+    width:820px;
+    background: url("_tbg.jpg");
+  }
+  #container{
+    min-width:800px;
+    margin-top:30px;
+    min-height: 60vh;
+  }
+  .frontCard{
+    margin-top:6%;
+  }
+  .word , .typedWord {
+    font-size: 60px;
+  }
+  #imgcontainer{
+      padding-bottom:5px;
+      min-height: 100px;
+  }
+  #imgcontainer img , video {
+    max-width: 350px;
+    max-height: 18vh;
+    /* min-width: 350px; */
+    min-height: 18vh;
+
+  }
+  .corner{
+      display:block;
+  }
+
+}
+/***************************************/
+.myFont{
+  font-family:myfont;
+}
+.boldClass {
+  font-weight: bold;
+}
+
+p{
+  padding:opx;
+  margin:0px;
+}
+
+.buttons{
+  width:60%;
+  margin:auto;
+}
+/**********************************************/
+.card {
+  font-size: 40px;
+  text-align: center;
+  color: black;
+  margin: 0 auto;
+}
+
+
+.frontCard{
+border:5px solid #777;
+border-radius:15px;
+padding:50px;
+display: block;
+position: relative;
+}
+
+
+#container {
+
+  #border:5px solid #777;
+  border-radius:15px;
+  position: relative;
+  z-index: 90;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+
+
+#imgcontainer img , video {
+
+  width: auto;
+  height: auto;
+  margin-top:15px;
+}
+
+/******************************************************/
+
+/*French word*/
+.word {
+  font-family: Impact;
+  color: black;
+  margin:0px;
+}
+
+/*English translation*/
+.translation{
+  font-size:20px;
+  color:#25272b;
+  padding-top:5px;
+}
+
+/*french and english examples*/
+.examples{
+  font-size:30px;
+  font-family: myfont;
+}
+
+
+.ipa{
+  font-size:20px;
+  font-weight:normal;
+  color:#424241;
+  #background-color:#424241;
+  #border-radius:-25px;
+
+}
+
+/****************************************************/
+
+/*Small replay  button on the back  card*/
+.button .replaybutton span svg {
+
+  font-size:40px;
+  background-color:white;
+  border: 1px dotted #CCC;
+  border-radius: 90px;
+}
+
+/*Large replay  button on the front card*/
+
+.button1 .replaybutton span svg {
+  font-size:200px;
+  background-color:white;
+  border: 1px dotted #CCC;
+  border-radius: 90px;
+}
+
+/**********************************************************/
+.corner {
+  width: 0;
+  height: 0;
+  border-top: 150px solid rgba(173, 147, 147, 0.4);
+  border-bottom: 150px solid transparent;
+  border-left: 150px solid transparent;
+  position:absolute;
+  right:0;
+}
+
+.corner span {
+  position:absolute;
+  top: -110px;
+  width: 100px;
+  left: -100px;
+  text-align: center;
+  font-size: 22px;
+  font-family: myfont;
+  transform: rotate(45deg);
+  display:block;
+  color:#efefef;
+}
+
+
+/**************************************************************************************************/
+@media only screen and (max-width: 786px) {
+  .card {
+    width: 100%;
+    height:100vh;
+    background: url("_tbg.jpg");
+
+
+  }
+#container{
+width:100%;
+margin-top:0px;
+}
+  .button1 .replaybutton span svg {
+    font-size:40px;
+  }
+
+
+  .corner{
+      display:none;
+  }
+
+.frontCard{
+  margin-top: 0.5%;
+}
+
+.word{
+font-size:35px;
+}
+  .typedWord {
+    font-size: 25px;
+  }
+  #imgcontainer{
+      padding-bottom:1px;
+  }
+  #imgcontainer img , video {
+    max-width: 200px;
+    max-height: 150px;
+  }
+
+.examples{
+font-size:20px;
+}
+
+.translation{
+  font-size:15px;
+  color:#25272b;
+  padding-top:2px;
+}
+
+.ipa{
+  font-size:15px;
+}
+
+#content{
+  margin:0.05em !important;
+}
+
+}
+
+
+
+.separator {
+  border: 0;
+}
+
+.separator--line {
+  border: 0;
+  border-bottom:1px solid #858585;
+
+  width: 0;
+  animation: separator-width 0.3s ease-out forwards;
+}
+@keyframes separator-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+
+
+.adverbBackground {background: rgb(201,162,255);
+background: linear-gradient(90deg, rgba(201,162,255,1) 12%, rgba(244,251,255,1) 100%);
+}
+
+.adverbImageContainer{
+ background-color:rgb(184, 77, 255);
+padding-bottom:5px;
+}
+/**************************************************************************************************/
+
+@font-face { font-family: myfont; src: url('_KGNeatlyPrinted.ttf'); }
