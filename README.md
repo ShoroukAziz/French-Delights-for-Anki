@@ -24,7 +24,7 @@ I've created a light version that only have the basic design elemnts to be reuse
   * BETA : displays the conjugations of each verb with examples
 
 
-**Detailed description of the models can be found in the wiki and Discussion goes here at reddit**
+**Detailed description of the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
 
 ### Dependancied :
   This addons needs for you to have installed the following addons:
@@ -33,8 +33,10 @@ I've created a light version that only have the basic design elemnts to be reuse
 
 ### Installation :
  #### To install the light version:
-  * Download and import [French-light.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/blob/master/light%20version/French-light.apkg)
-  * download  extract the content and copy the  **_code** folder into your **collection.media** folder
- #### to install the full version :
+  * Download [this file](https://github.com/ShoroukAziz/Anki-French-Delights/blob/master/light%20version/_code.rar) extract the content and copy the  **_code** folder into your **collection.media** folder
+  *   Download and import [French-light.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/blob/master/light%20version/French-light.apkg)
+
+#### to install the full version :
   * download the plugin
-  * download and import the following apkg files  
+  * Download [this file]() extract the content and copy the  **_code** folder into your **collection.media** folder
+  * download and import both [apkg1]() , [apkg2]()
