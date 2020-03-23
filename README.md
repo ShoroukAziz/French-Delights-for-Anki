@@ -9,7 +9,7 @@ I've created a light version that only have the basic design elemnts to be reuse
   * searches for examples (that already exisits in your collection ) that fits your card and assign those examples to your card
   * randomly assigns an example to be displayed on each card (so you don't get used to a word in only one contex)
 
-### The template :
+### The Template :
   * a different background color for each part of speech
   * contains a set of side menus that can show or hide the following fields :
     * menu 1 : IPA - Part of Speech - extra examples
