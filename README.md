@@ -28,13 +28,13 @@ I've created a light version that only have the basic design elemnts to be reuse
 
 ### Dependancied :
   This addons needs for you to have installed the following addons:
-  * [Add note id] (https://ankiweb.net/shared/info/1672832404)
-  * [Additional Card Fields (Fork for 2.1)] (https://ankiweb.net/shared/info/744725736)
+  * [Add note id](https://ankiweb.net/shared/info/1672832404)
+  * [Additional Card Fields (Fork for 2.1)](https://ankiweb.net/shared/info/744725736)
 
 ### Installation :
  #### To install the light version:
-  * head to
-  * import the apkg file and copy the '_code' file to your collection.media folder
+  * Download and import [French-light.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/blob/master/light%20version/French-light.apkg)
+  * download  extract the content and copy the  **_code** folder into your **collection.media** folder
  #### to install the full version :
   * download the plugin
   * download and import the following apkg files  
