@@ -3,7 +3,9 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
 </p>
-This is an addon and a set of models (Templates) for [Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design.
+
+This is an addon and a set of models (Templates) for
+[Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design.
 I've created a light version that only have the basic design elements to be reused with any other language too.
 
 ___
