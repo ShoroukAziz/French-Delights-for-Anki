@@ -17,15 +17,15 @@ ___
   * a different background color for each part of speech
   * contains a set of side menus that can show or hide the following fields :
 
-  ![menu](https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/menu.PNG?token=AGOGZYU3HU2PBCNJV3E7GW26QFN7W)
-  
-    * menu 1 : IPA - Part of Speech - extra examples
-    * menu 2 : etymology - mnemonic - tags
-    * menu 3 :
+    * *menu 1* : IPA - Part of Speech - extra examples
+    * *menu 2* : etymology - mnemonic - tags
+    * *menu 3* :
       * highlight the differences between the French and English words
       * show your own highlighting
       * highlight the differences between the feminine and masculine versions of a word
       * shows the plural form of the noun and highlights the difference between it and the singular form
+
+        ![menu](https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/menu.PNG?token=AGOGZYU3HU2PBCNJV3E7GW26QFN7W)
   * displays whether the card is new , young or mature
 
   ![stars](https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/stars.PNG?token=AGOGZYTYBIMGOGJ4FJGUTYC6QFOB2)
