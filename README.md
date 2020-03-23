@@ -1,8 +1,8 @@
 # Anki-French-Delights
-##### a template and plugin for Anki
+##### a template and an addon for Anki
 ![gif](https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif)
 
-this is a set of models (Templates) for [Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design
+this is an addon and a set of models (Templates) for [Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design
 I've created a light version that only have the basic design elements to be reused with any other language too.
 
 ___
