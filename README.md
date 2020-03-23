@@ -39,7 +39,7 @@ ___
 **Detailed description of the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
 ___
 
-### Dependancied :
+### Dependencies :
   This addons needs for you to have installed the following addons:
   * [Add note id](https://ankiweb.net/shared/info/1672832404)
   * [Additional Card Fields (Fork for 2.1)](https://ankiweb.net/shared/info/744725736)
@@ -48,9 +48,10 @@ ___
 ### Installation :
  #### To install the light version:
   * Download [this file](https://github.com/ShoroukAziz/Anki-French-Delights/blob/master/light%20version/_code.rar) extract the content and copy the  **_code** folder into your **collection.media** folder
-  *   Download and import [French-light.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/blob/master/light%20version/French-light.apkg)
+  *   Download and import [French-light.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/light%20version/French-light.apkg)
 
 #### to install the full version :
+  * make sure you installed the dependencies
   * download the plugin
   * Download [this file]() extract the content and copy the  **_code** folder into your **collection.media** folder
-  * download and import both [apkg1]() , [apkg2]()
+  * download and import both [French sentence Bank.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/French%20sentence%20Bank.apkg) and [French.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/French.apkg)
