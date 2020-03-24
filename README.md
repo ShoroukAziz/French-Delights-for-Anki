@@ -69,7 +69,7 @@ I've created a light version that only have the basic design elements to be reus
 
 **Detailed description of the addon and the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
 ---
-___
+
 
 ### Dependencies :
   This addons needs for you to have installed the following addons:
