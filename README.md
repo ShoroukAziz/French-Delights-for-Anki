@@ -19,7 +19,7 @@ I've created a light version that only have the basic design elements to be reus
 
 
 ## The main features
-### The Plugin :
+### The Addon :
   * Searches for examples (that already exists in your collection ) that fits your card and assign those examples to your card.
   * Randomly assigns an example to be displayed on each card (so you don't get used to a word in only one context).
 
