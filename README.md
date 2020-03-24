@@ -1,13 +1,21 @@
 # Anki-French-Delights
 ##### A template and an addon for Anki.
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
+<br>
+<p align="right" style="float:right">
+
+  <img src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="150px"  >  
 </p>
+
+<p align="left" style="float:left">
 
 This is an addon and a set of models (Templates) for
 [Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design.
 I've created a light version that only have the basic design elements to be reused with any other language too.
+</p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
+</p>
 ___
 
 ## The main features :
@@ -35,17 +43,18 @@ ___
         <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/menu.PNG?token=AGOGZYU3HU2PBCNJV3E7GW26QFN7W" width="100" title="menu">  
       </p>
   * Displays whether the card is new , young or mature.
-  <p align=center>
+  <p align=center >
     <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/stars.PNG?token=AGOGZYTYBIMGOGJ4FJGUTYC6QFOB2" width="100" title="stars">  
   </p>
 
 
   * A set of buttons to search for the word in ( collins , google , wikishinari and linguee ).
   * IN DEVELOPMENT : Displays the conjugations of each verb with examples.
-  <p align=center>
-    <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/cong.PNG?token=AGOGZYSMTHILUE6UAOR5SLS6QFN4I" width="350" title="verb image">  
+  <p   align=center>
+    <img   src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/cong.PNG?token=AGOGZYSMTHILUE6UAOR5SLS6QFN4I" width="350" title="verb image">  
   </p>
-  <p align=center>
+  
+  <p   align=center>
     <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/cong2.PNG?token=AGOGZYRGIJZKJHG7SB6VDHC6QFN5S" width="350" title="verb image">  
   </p>
 
