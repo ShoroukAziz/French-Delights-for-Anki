@@ -1,9 +1,7 @@
 # Anki-French-Delights
 ##### A template and an addon for Anki.
-<br>
 
   <img align="right" src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="150px"  >  
-
 
 This is an addon and a set of models (Templates) for
 [Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design.
@@ -13,9 +11,9 @@ I've created a light version that only have the basic design elements to be reus
 <br>
 <br>
 
-
-  <img  align="center" src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
-
+<p  align="center" >
+  <img  src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
+</p>
 ___
 
 ## The main features :
@@ -25,7 +23,11 @@ ___
 
 ### The Template :
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/noun1.PNG?token=AGOGZYS7ZX6OC5PGF2DU6H26QFNWC" width="350" title="template picture">  
+ <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/noun1.PNG?token=AGOGZYS7ZX6OC5PGF2DU6H26QFNWC" width="350" >  
+  <img src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/adverb.PNG"  width="350">  
+  <img src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/verb.PNG"  width="350">  
+  <img src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/adj.PNG"  width="350">  
+  
 </p>
 
   * A different background color for each part of speech ; EX: blue for masculine nouns and pink for feminine ones.
