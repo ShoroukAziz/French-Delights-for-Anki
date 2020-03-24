@@ -39,9 +39,8 @@ I've created a light version that only have the basic design elements to be reus
   <p >
     <img  align=right src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/menu.PNG?token=AGOGZYU3HU2PBCNJV3E7GW26QFN7W" width="100" >  
   </p>
-  <p>
-  * Contains a set of side menus that can show or hide the following fields :
 
+  * Contains a set of side menus that can show or hide the following fields :
     * *Menu 1* : IPA - Part of Speech - extra examples
     * *Menu 2* : etymology - mnemonic - tags
     * *Menu 3* :
@@ -49,7 +48,8 @@ I've created a light version that only have the basic design elements to be reus
       * Show your own highlighting.
       * Highlight the differences between the feminine and masculine versions of a word.
       * Shows the plural form of the noun and highlights the difference between it and the singular form.
-</p>
+      
+
 <br>
 <br>
 <p>
@@ -65,7 +65,6 @@ I've created a light version that only have the basic design elements to be reus
   * IN DEVELOPMENT : Displays the conjugations of each verb with examples.
   <p   align=center>
     <img   src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/cong.PNG?token=AGOGZYSMTHILUE6UAOR5SLS6QFN4I" width="350" title="verb image">  
-
     <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/cong2.PNG?token=AGOGZYRGIJZKJHG7SB6VDHC6QFN5S" width="350" title="verb image">  
   </p>
 
