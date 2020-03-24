@@ -13,8 +13,6 @@ I've created a light version that only have the basic design elements to be reus
 <br>
 <br>
 <br>
-<br>
-<br>
 <p   align="center" >
   <img  src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
 </p>
