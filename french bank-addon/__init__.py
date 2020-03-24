@@ -427,17 +427,19 @@ def runAddon():
 
 
 
-action = QAction("Refresh bank", mw)
+
+action = QAction("Refresh examples", mw)
 action.triggered.connect(refresh)
 mw.form.menuTools.addAction(action)
 
-action2 = QAction("update and refresh bank", mw)
+action2 = QAction("Update bank and refresh examples", mw)
 action2.triggered.connect(runAddon)
 mw.form.menuTools.addAction(action2)
 
-action3 = QAction("refresh Verbs", mw)
+action3 = QAction("Refresh verbs", mw)
 action3.triggered.connect(refreshVerbs)
 mw.form.menuTools.addAction(action3)
+
 
 
 
