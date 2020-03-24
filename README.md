@@ -4,15 +4,17 @@
 
   <img align="right" src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="150px"  >  
 
-<p align="left" style="float:left">
 
 This is an addon and a set of models (Templates) for
 [Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design.
 I've created a light version that only have the basic design elements to be reused with any other language too.
-</p>
+<br>
+<br>
+<br>
+<br>
 
 
-  <img style="dispaly:block" align="center" src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
+  <img  align="center" src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
 
 ___
 
@@ -51,7 +53,7 @@ ___
   <p   align=center>
     <img   src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/cong.PNG?token=AGOGZYSMTHILUE6UAOR5SLS6QFN4I" width="350" title="verb image">  
   </p>
-  
+
   <p   align=center>
     <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/cong2.PNG?token=AGOGZYRGIJZKJHG7SB6VDHC6QFN5S" width="350" title="verb image">  
   </p>
