@@ -1,10 +1,8 @@
 # Anki-French-Delights
 ##### A template and an addon for Anki.
 <br>
-<p align="right" style="float:right">
 
-  <img src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="150px"  >  
-</p>
+  <img align="right" src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="150px"  >  
 
 <p align="left" style="float:left">
 
@@ -13,9 +11,9 @@ This is an addon and a set of models (Templates) for
 I've created a light version that only have the basic design elements to be reused with any other language too.
 </p>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
-</p>
+
+  <img style="dispaly:block" align="center" src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
+
 ___
 
 ## The main features :
