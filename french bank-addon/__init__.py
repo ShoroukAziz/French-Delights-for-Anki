@@ -231,7 +231,7 @@ def refresh():
                 listOfIds = wordsDict[french_word+"s"]
                 for exId in listOfIds :
                     examples_list.append(bankDict[exId])
-            if french_word+"e" in wordsDict:
+            if french_word+"e" in wordsDict and french_word != 'parc':
                 listOfIds = wordsDict[french_word+"e"]
                 for exId in listOfIds :
                     examples_list.append(bankDict[exId])
