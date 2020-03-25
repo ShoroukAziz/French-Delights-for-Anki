@@ -1,6 +1,5 @@
 # French Delights for Anki
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/)
- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   <img style="margin:15px;" align="right" src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="200px"  >
 
