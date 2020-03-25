@@ -618,6 +618,7 @@ function unMark(){
 function displaypPlural(){
 
 if(document.getElementsByClassName('pluralText')[0]){
+  console.log('aa')
   var plural = strip((document.getElementsByClassName('pluralText')[0].innerHTML).trim());
 
 
@@ -645,11 +646,12 @@ if(document.getElementsByClassName('pluralText')[0]){
 
 }
 else if (document.getElementsByClassName('plurals')[0]){
-
+console.log('ko')
   if(document.getElementById('pluralM')){
     var pluralM = strip((document.getElementById('pluralM').innerHTML).trim());
     siblings = isSibling (word , pluralM , plPairs)
     if (siblings ){
+
         pluralText = markSiplingsEnding(word ,pluralM,siblings[0],siblings[1],'#0099cc')[1]
         word2 = markSiplingsEnding(word ,pluralM,siblings[0],siblings[1],'#0099cc')[0]
     }
