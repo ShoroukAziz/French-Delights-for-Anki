@@ -19,53 +19,13 @@ I've created a light version that only have the basic design elements to be reus
 
 
 ## The main features
-### The Addon :
-  * Searches for examples (that already exists in your collection ) that fits your card and assign those examples to your card.
-  * Randomly assigns an example to be displayed on each card (so you don't get used to a word in only one context).
-
-### The Template :
-<p align="center">
- <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/noun1.PNG?token=AGOGZYS7ZX6OC5PGF2DU6H26QFNWC" width="350" >  
-  <img src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/adverb.PNG"  width="350">  
-  <img src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/verb.PNG"  width="350">  
-  <img src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/adj.PNG"  width="350">  
-
-</p>
-
-  * A different background color for each part of speech ; EX: blue for masculine nouns and pink for feminine ones.
-
-  <p >
-    <img  align=right src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/menu.PNG?token=AGOGZYU3HU2PBCNJV3E7GW26QFN7W" width="100" >  
-  </p>
-
-  * Contains a set of side menus that can show or hide the following fields :
-    * *Menu 1* : IPA - Part of Speech - extra examples
-    * *Menu 2* : etymology - mnemonic - tags
-    * *Menu 3* :
-      * Highlight the differences between the French and English words.
-      * Show your own highlighting.
-      * Highlight the differences between the feminine and masculine versions of a word.
-      * Shows the plural form of the noun and highlights the difference between it and the singular form.
-      
-
-<br>
-<br>
-<p>
-      <p align=center >
-        <img  align=right src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/stars.PNG?token=AGOGZYTYBIMGOGJ4FJGUTYC6QFOB2" width="100" title="stars">  
-      </p>
-
-  * Displays whether the card is new , young or mature.
-</p>
-
-
-  * A set of buttons to search for the word in ( collins , google , wikishinari and linguee ).
-  * IN DEVELOPMENT : Displays the conjugations of each verb with examples.
-  <p   align=center>
-    <img   src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/cong.PNG?token=AGOGZYSMTHILUE6UAOR5SLS6QFN4I" width="350" title="verb image">  
-    <img src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/screenshots/cong2.PNG?token=AGOGZYRGIJZKJHG7SB6VDHC6QFN5S" width="350" title="verb image">  
-  </p>
-
+   * [Verb Conjugations](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-verb-Conjugations)
+   * The Menus
+      * [Menu 1](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-Menu1)
+      * [Menu 2](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-Menu2)
+      * [Menu 3](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-Menu-3)
+   * [The Search buttons](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-The-Search-buttons)
+   * [Maturity state Indecator](Anki)
 
 **Detailed description of the addon and the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
 ---
