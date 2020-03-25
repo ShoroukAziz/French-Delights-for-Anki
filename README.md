@@ -2,13 +2,15 @@
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/)
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  <img style="margin:15px;" align="right" src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="100px"  >
+  <img style="margin:15px;" align="right" src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="200px"  >
 
 ##### A template and an addon for Anki.
 
 This is an addon and a set of models (Templates) for
 [Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design.
 I've created a light version that only have the basic design elements to be reused with any other language too.
+**Detailed description of the addon and the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
+---
 <br>
 <br>
 <br>
@@ -27,8 +29,6 @@ I've created a light version that only have the basic design elements to be reus
    * [The Search buttons](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-The-Search-buttons)
    * [Maturity state Indecator](Anki)
 
-**Detailed description of the addon and the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
----
 
 
 ### Dependencies :
