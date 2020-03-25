@@ -12,11 +12,6 @@ I've created a [light version](https://github.com/ShoroukAziz/French-Delights-fo
 
 **Detailed description of the addon and the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
 ---
-<br>
-<br>
-<p   align="center" >
-  <img  src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
-</p>
 
 
 ### The main features
@@ -46,3 +41,7 @@ I've created a [light version](https://github.com/ShoroukAziz/French-Delights-fo
   * Download the plugin.
   * Download [this file](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/_code.rar) extract the content. and, copy the  **_code** folder into your **collection.media** folder.
   * Download and import both [French sentence Bank.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/French%20sentence%20Bank.apkg) and [French.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/French.apkg) into Anki.
+  
+  <p   align="center" >
+  <img  src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
+</p>
