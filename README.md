@@ -19,7 +19,7 @@ I've created a [light version](https://github.com/ShoroukAziz/French-Delights-fo
 </p>
 
 
-## The main features
+### The main features
    * [Verb Conjugations](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-verb-Conjugations)
    * The Menus
       * [Menu 1](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-Menu1)
@@ -27,7 +27,7 @@ I've created a [light version](https://github.com/ShoroukAziz/French-Delights-fo
       * [Menu 3](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-Menu-3)
    * [The Search buttons](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-The-Search-buttons)
    * [Maturity state Indecator](Anki)
-
+ ___
 
 
 ### Dependencies :
