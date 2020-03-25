@@ -9,6 +9,7 @@
 This is an addon and a set of models (Templates) for
 [Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design.
 I've created a light version that only have the basic design elements to be reused with any other language too.
+
 **Detailed description of the addon and the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
 ---
 <br>
