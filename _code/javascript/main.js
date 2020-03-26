@@ -1,43 +1,19 @@
-/******************************************************************************************************************/
-/******************************************************************************************************************/
-/******************************************************************************************************************/
-/******************************************************************************************************************/
-var backgroundColor = document.createElement('script');
-backgroundColor.type = 'text/javascript';
-backgroundColor.src = '_code/javascript/helpers/backgroundColor.js';
-document.getElementsByTagName('head')[0].appendChild(backgroundColor);
+/**
+ *  adds the helpers scripts to the head
+*/
 
+var helpersScripts = ['background_color.js' , 'extra_examples.js' ,'menu2.js' ,'menu3.js' , 'stars.js'  ]
+helpersScripts.forEach(addScript);
+function addScript(item)
+{
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '_code/javascript/helpers/'+item;
+    document.getElementsByTagName('head')[0].appendChild(script);
+}
 
-var extraExamples = document.createElement('script');
-extraExamples.type = 'text/javascript';
-extraExamples.src = '_code/javascript/helpers/extraExamples.js';
-document.getElementsByTagName('head')[0].appendChild(extraExamples);
-
-var menu2 = document.createElement('script');
-menu2.type = 'text/javascript';
-menu2.src = '_code/javascript/helpers/menu2.js';
-document.getElementsByTagName('head')[0].appendChild(menu2);
-
-
-var menu3 = document.createElement('script');
-menu3.type = 'text/javascript';
-menu3.src = '_code/javascript/helpers/menu3.js';
-document.getElementsByTagName('head')[0].appendChild(menu3);
-
-var stars = document.createElement('script');
-stars.type = 'text/javascript';
-stars.src = '_code/javascript/helpers/stars.js';
-document.getElementsByTagName('head')[0].appendChild(stars);
-
-/******************************************************************************************************************/
-/******************************************************************************************************************/
-/******************************************************************************************************************/
-/******************************************************************************************************************/
-/******************************************************************************************************************/
-
-
-
-pairs = [ ['alt','alte'] , ['arian','aire'] ,  ['gen','gène'] , ['graph','graphe'] , ['ic','ique'] , ['isk','isque'] , ['ism','isme'],
+/************************************************************************/
+ pairs = [ ['alt','alte'] , ['arian','aire'] ,  ['gen','gène'] , ['graph','graphe'] , ['ic','ique'] , ['isk','isque'] , ['ism','isme'],
 ['ist','iste'] , ['meter','mètre'] , ['mony','monie'] , ['oid' , 'oide'] , ['or' , 'eur'] , ['ot' , 'ote'] , ['sis' , 'se'] , ['ter' , 'tre'],
 ['ty','té'] , ['y','ie'] , ['acious' , 'ace'] , ['an','ain'] , ['ar' , 'aire'] , ['arious','aire'] , ['ary','aire'] , ['ferrous' , 'fère'] ,
  ['ical','ique'] , ['id' , 'ide'] , ['ine' , 'in'],
@@ -45,14 +21,16 @@ pairs = [ ['alt','alte'] , ['arian','aire'] ,  ['gen','gène'] , ['graph','graph
 ['ent','em'],['ect','ait'], ['act','aite'],['ate','ative'] ,['k','que'],['er','re'],['ous','e'],['ious','aire'],['ous','ique'],['ed','é']
 ]
 
-advPairs = [['y','ement'], ['ally','ellement'],['ly','ement'],['ly','ément'],['ly','ment']  ]
+ advPairs = [['y','ement'], ['ally','ellement'],['ly','ement'],['ly','ément'],['ly','ment']  ]
 
-femPairs = [ ['ère','er'] , ['se','s'] , ['ve','f'] , ['euse','eux'] , ['che','c'] , ['euse','eur'] ,
+ femPairs = [ ['ère','er'] , ['se','s'] , ['ve','f'] , ['euse','eux'] , ['che','c'] , ['euse','eur'] ,
           ,['teuse','teur'] , ['eresse','eur'] , ['elle','eau'] , ['olle','ou'] , ['aîtresse','aître']]
 
-plPairs = [['aux','al'],['oux','ou'],['aux','ail'],['aux','au'],['eaux','eau'],['s','s'],['x','x'],['z','z']]
+ plPairs = [['aux','al'],['oux','ou'],['aux','ail'],['aux','au'],['eaux','eau'],['s','s'],['x','x'],['z','z']]
 
+/***************************************************************************/
 
+// Helpers functions
 
 String.prototype.removeAt=function(index) {
   return this.substr(0, index) + this.substr(index+1,);
@@ -60,17 +38,22 @@ String.prototype.removeAt=function(index) {
 String.prototype.replaceAt=function(index, replacement) {
   return this.substr(0, index) + replacement+ this.substr(index+1,);
 }
-String.prototype.splitAt = function(index){
-  return this.substring(0, index) + "," + this.substring(index);
-}
 
 function strip(html){
   var doc = new DOMParser().parseFromString(html, 'text/html');
   return doc.body.textContent || "";
 }
 
-  translation = strip(document.getElementsByClassName('translationText')[0].innerHTML.trim());
-  word =strip(document.getElementById('word').innerHTML.trim());
+/***************************************************************************/
+
+// the word the HTML styling tags
+var html_word =document.getElementById('word').innerHTML;
+word = strip(html_word.trim());
+
+// the translation with the HTML styling tags
+var html_translation = document.getElementsByClassName('translationText')[0].innerHTML;
+translation = strip(html_translation.trim());
+
 
 if(document.getElementsByClassName('feminin')[0]){
     fem = strip(document.getElementsByClassName('feminin')[0].innerHTML.trim())
@@ -78,50 +61,55 @@ if(document.getElementsByClassName('feminin')[0]){
 else{
   fem = null
   document.getElementById("o4").disabled = true;
-    document.getElementById("o4").parentElement.style.color = '#4f5154';
+  document.getElementById("o4").parentElement.style.color = '#4f5154';
 }
 if(document.getElementById('pluralM')){
     pluralM = strip(document.getElementById('pluralM').innerHTML.trim())
 }
 else if(document.getElementsByClassName('pluralText')[0]){
-
+    // for nouns
+     //pass
 }
 else{
+  // for verbs and adverbs
   pluralM = null
   document.getElementById("o5").disabled = true;
   document.getElementById("o5").parentElement.style.color = '#4f5154';
 }
 
+/***************************************************************************/
 
-if(document.getElementById('wordSound')){
-  if(document.getElementById('wordSound').innerHTML.endsWith('<br>'))
-  document.getElementById('wordSound').innerHTML=document.getElementById('wordSound').innerHTML.slice(0,-4)
-}
-if(document.getElementById('exampleSound')){
-  if(document.getElementById('exampleSound').innerHTML.endsWith('<br>'))
-  document.getElementById('exampleSound').innerHTML=document.getElementById('exampleSound').innerHTML.slice(0,-4)
-}
-if(document.getElementById('femeSound')){
-  if(document.getElementById('femeSound').innerHTML.endsWith('<br>'))
-  document.getElementById('femeSound').innerHTML=document.getElementById('femeSound').innerHTML.slice(0,-4)
-}
-if(document.getElementById('pSound')){
-  if(document.getElementById('pSound').innerHTML.endsWith('<br>'))
-  document.getElementById('pSound').innerHTML=document.getElementById('pSound').innerHTML.slice(0,-4)
+/**
+ *  Remove the extra new line tag that Anki adds at the end of the audio fields
+*/
+soundFieldsIds = ['wordSound','exampleSound','femeSound','pSound']
+
+soundFieldsIds.forEach(removeExtraNewLineTagInSoundFields);
+function removeExtraNewLineTagInSoundFields(item)
+{
+  if(document.getElementById(item)){
+    if(document.getElementById(item).innerHTML.endsWith('<br>'))
+    document.getElementById(item).innerHTML=document.getElementById(item).innerHTML.slice(0,-4)
+  }
 }
 
+/***************************************************************************/
+
+function prepareFields(){
+  document.getElementsByClassName('translationText')[0].innerHTML = translation
+  document.getElementById('word').innerHTML = word
+}
+function markFrenchWordInTheExample (){
+  document.getElementById('frenchExamble').innerHTML =document.getElementById('frenchExamble').innerHTML.replace(word,"<span style='color:red; background-color:#c2e653bd;'>"+word+"</span>")
+
+}
+prepareFields()
+markFrenchWordInTheExample ()
 
 
-var html_translation = document.getElementsByClassName('translationText')[0].innerHTML;
-var html_word =document.getElementById('word').innerHTML;
-
-document.getElementsByClassName('translationText')[0].innerHTML = translation
-document.getElementById('word').innerHTML = word
-document.getElementById('frenchExamble').innerHTML =document.getElementById('frenchExamble').innerHTML.replace(word,"<span style='color:red; background-color:#c2e653bd;'>"+word+"</span>")
-
-/*****************************************************************************************************************************/
-/* -------------------------------------------Siblings detctors--- ----------------------------------------------------------*/
-/*****************************************************************************************************************************/
+/***************************************************************************************************************/
+/* -------------------------------------------Siblings detctors--- --------------------------------------------*/
+/***************************************************************************************************************/
 
 
 function isSibling (word , translation , testingPairs){
@@ -132,7 +120,6 @@ function isSibling (word , translation , testingPairs){
     if(word.endsWith(element[1]) && translation.endsWith(element[0])){
 
       if(translation.slice(0,translationIndex) == word.slice(0,wordIndex)){
-          console.log("Sibling");
           result =  element;
       }
     }
@@ -189,9 +176,9 @@ function isChapeau (word,translation){
 }
 
 
-/*****************************************************************************************************************************/
-/* --------------------------------------------slight change detctors--------------------------------------------------------*/
-/*****************************************************************************************************************************/
+/****************************************************************************************************/
+/* ---------------------------------------slight change detctors------------------------------------*/
+/****************************************************************************************************/
 
 
 function hasAFlippedLetter (word , translation){
@@ -230,9 +217,9 @@ function hasAShorterTranslation(word,translation){
   }
 }
 
-/*****************************************************************************************************************************/
-/* --------------------------------------------complicated change detctors---------------------------------------------------*/
-/*****************************************************************************************************************************/
+/***********************************************************************************************/
+/* ---------------------------------------complicated change detctors--------------------------*/
+/***********************************************************************************************/
 
 function isSiblingWithExtraLetter(word,translation,testingPairs){
 
@@ -309,11 +296,7 @@ function hasDoubleSiblingflippedLetter (word ,translation){
 //TODO
 }
 
-
-
-/*****************************************************************************************************/
-/*****************************************************************************************************/
-/*****************************************************************************************************/
+/*****************************************************************************/
 
 //part1: the translation ending
 //part2: the french word ending
@@ -483,9 +466,7 @@ function highlightSpelling (nOfChanges , theWord , theTranslation ,  part1 , par
 
 
 
-/*****************************************************************************************************/
-/*****************************************************************************************************/
-/*****************************************************************************************************/
+/***************************************************************************************/
 function mark(){
 
 if(translation.split(" ").length > 0 ){
@@ -613,7 +594,6 @@ function unMark(){
   }
   document.getElementById('ribbon').className="";
 }
-/*****************************************************************************************/
 
 function displaypPlural(){
 
@@ -703,6 +683,9 @@ console.log('ko')
 }
 
 }
+/***************************************************************************************/
+
+
 
 
 
