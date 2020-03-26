@@ -24,9 +24,8 @@ I've created a [light version](https://github.com/ShoroukAziz/French-Delights-fo
  ___
 
 
-### Dependencies :
-  This addons needs for you to have installed the following addons:
-  * [Add note id](https://ankiweb.net/shared/info/1672832404)
+### Dependency :
+  install this addon first
   * [Additional Card Fields (Fork for 2.1)](https://ankiweb.net/shared/info/744725736)
   ___
 
