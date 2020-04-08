@@ -3,13 +3,21 @@
 
   <img style="margin:15px;" align="right" src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="200px"  >
 
-##### A template and an addon for Anki.
+  ##### A Collections of Template for Anki.
 
-This is an addon and a set of models (Templates) for
-[Anki](https://apps.ankiweb.net/) (For learning the French language) with extra features and an interesting design.
-I've created a [light version](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Light-Version) that only have the basic design elements to be reused with any other language too.
+  This is a set of models (Templates) for
+  [Anki](https://apps.ankiweb.net/). Minly, for learning the French language (could also be used with other languages but with less features).<br>
+<b>Theset contains 4 versions:</b> <br>
+<ul>
+<li> French delights - French - full version
+<li> French delights - French - light version
+<li> French delights - Other languages - full version
+<li> French delights - Other languages - light version
+</ul>
 
-**Detailed description of the addon and the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
+The full versions work best with [MEPR addon]() so check it out.
+
+**Detailed description of the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
 ---
 
 
@@ -39,7 +47,7 @@ I've created a [light version](https://github.com/ShoroukAziz/French-Delights-fo
   * Download the plugin.
   * Download [this file](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/_code.rar) extract the content. and, copy the  **_code** folder into your **collection.media** folder.
   * Download and import both [French sentence Bank.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/French%20sentence%20Bank.apkg) and [French.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/French.apkg) into Anki.
-  
+
   <p   align="center" >
   <img  src="https://raw.githubusercontent.com/ShoroukAziz/Anki-French-Delights/master/light%20version/screenshots/ezgif-6-249ca9708a04.gif?token=AGOGZYVE6SJ5TWJBGCIA3I26QJVG2"  >  
 </p>

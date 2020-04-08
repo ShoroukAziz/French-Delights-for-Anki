@@ -1,5 +1,3 @@
-/**********************************************************/
-
 
 /*********************************/
 @media only screen and (min-width: 786px) {
@@ -39,19 +37,12 @@
 
 }
 /***************************************/
-.myFont{
-  font-family:myfont;
-}
-.boldClass {
-  font-weight: bold;
-}
-
 p{
-  padding:opx;
+  padding:0px;
   margin:0px;
 }
 
-.buttons{
+.sound-buttons-container{
   width:60%;
   margin:auto;
 }
@@ -107,12 +98,14 @@ position: relative;
   font-size:20px;
   color:#25272b;
   padding-top:5px;
+  font-weight: bold;
 }
 
 /*french and english examples*/
 .examples{
   font-size:30px;
   font-family: myfont;
+  font-weight: bold;
 }
 
 
@@ -266,6 +259,7 @@ position: relative;
   border-left: 150px solid transparent;
   position:absolute;
   right:0;
+  font-weight: bold;
 }
 
 .corner span {
