@@ -15,7 +15,7 @@
 <li> French delights - Other languages - light version
 </ul>
 
-The full versions work best with [MEPR addon]() so check it out.
+The full versions work best with [MEPR addon](https://github.com/ShoroukAziz/multiple-examples-per-note) so check it out.
 
 **Detailed description of the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
 ---
