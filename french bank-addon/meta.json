@@ -1,1 +1,0 @@
-{"name": "french bank", "mod": 789, "config": {"autoRefresh": false, "sentenceModelName":"french sentence","bankDeckName":"French sentence Bank", "mainModelsNames": ["french adjectives", "french adverbs", "french nouns", "french verbs"]}}

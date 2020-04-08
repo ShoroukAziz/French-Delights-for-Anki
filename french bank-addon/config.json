@@ -1,9 +1,0 @@
-{
-
-    "mainModelsNames": [
-    	"french adjectives" , "french adverbs" , "french nouns" , "french verbs"
-   ],
-   "sentenceModelName":"french sentence",
-   "bankDeckName":"French sentence Bank",
-   "autoRefresh":false
-}
