@@ -37,7 +37,7 @@
   for(var i = 0, max = options.length; i < max; i++) {
 
       options[i].onclick =function() {
-        console.log('clicked')
+        // console.log('clicked')
            window.optionId = this.id
            dispalyOption(window.optionId);
 
@@ -46,7 +46,7 @@
 
   function dispalyOption(id) {
     for(var i = 0, max = options.length; i < max; i++) {
-        options[i].style.backgroundColor='pink'
+        options[i].style.backgroundColor='#f3dcf500'
     }
     for(var i = 0, max = extraOptions.length; i < max; i++) {
         extraOptions[i].style.display='none'

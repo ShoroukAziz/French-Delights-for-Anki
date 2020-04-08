@@ -29,7 +29,7 @@ if(document.getElementById('exBank')){
                 }
               }
               else{
-                document.getElementById('brIcon').style.display='none'
+                document.getElementById('previousIcon').style.display='none'
                 document.getElementById('nxtIcon').style.display='none'
                 document.getElementById('noOfEx').style.display='none'
                 // checkEX.disabled = true
@@ -38,58 +38,13 @@ if(document.getElementById('exBank')){
 
               for (var i = 0 ; i < bankJSON.length ; i++){
                 bankJSON[i]['fr'] = bankJSON[i]['fr'].replace(word,"<span style='color:red; background-color:#c2e653bd;'>"+word+"</span>")
-                // bankJSON[i]['en'] =  bankJSON[i]['en'].replace(translation,"<span style='color:red; background-color:#c2e653bd;'>"+translation+"</span>")
-                //
-                // if (type.includes(' verb')){
-                //   to_translation = translation.split('to ')
-                //   if(to_translation.length == 2  ){
-                //     bankJSON[i]['en'] = bankJSON[i]['en'].replace(to_translation[1],"<span style='color:red; background-color:#c2e653bd;'>"+to_translation[1]+"</span>")
-                //
-                //   }
-                //   other_translations = translation.split(',')
-                //   console.log(other_translations)
-                //   if(other_translations.length > 1  ){
-                //     for(var j = 0 ; j < other_translations.length ; j++ ){
-                //       console.log(other_translations[j])
-                //       other_translations[j] = other_translations[j].split('to')[1]
-                //       bankJSON[i]['en'] =bankJSON[i]['en'].replace(other_translations[j],"<span style='color:red; background-color:#c2e653bd;'>"+other_translations[j]+"</span>")
-                //
-                //
-                //
-                //     }
-                //
-                //
-                //   }
-                // }
-                // else {
-                //   other_translations = translation.split(' ')
-                //
-                //   if(other_translations.length > 1 ){
-                //     // console.log(other_translations)
-                //     for(var j = 0 ; j < other_translations.length ; j++ ){
-                //       if (bankJSON[i]['en'].includes(other_translations[j]) && other_translations[j]!="," && other_translations[j] != 'to'){
-                //         bankJSON[i]['en']= bankJSON[i]['en'].replace(other_translations[j],"<span style='color:red; background-color:#c2e653bd;'>"+other_translations[j]+"</span>")
-                //
-                //       }
-                //
-                //     }
-                //
-                //
-                //   }
-                // }
 
-
-              }
-
-              // console.log(current_index)
 
       }
+    }
       else{
-
-
-
-        checkEX.disabled = true
-        document.getElementById('brIcon').style.display='none'
+        checkEX.disabled = true;
+        document.getElementById('previousIcon').style.display='none'
         document.getElementById('nxtIcon').style.display='none'
         document.getElementById('noOfEx').style.display='none'
 
@@ -121,7 +76,7 @@ function nextExample(){
 
 }
 
-function breviousExample(){
+function previousExample(){
   indexOnScreen-=1;
   if(indexOnScreen <= 0){
     indexOnScreen = bankJSON.length

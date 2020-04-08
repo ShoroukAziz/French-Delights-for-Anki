@@ -20,24 +20,7 @@ _15S = document.getElementById('15S').innerHTML
 _16S = document.getElementById('16S').innerHTML
 _17S = document.getElementById('17S').innerHTML
 _18S = document.getElementById('18S').innerHTML
-// console.log(_1S)
-// console.log(_2S)
-// console.log(_3S)
-// console.log(_4S)
-// console.log(_5S)
-// console.log(_6S)
-// console.log(_7S)
-// console.log(_8S)
-// console.log(_9S)
-// console.log(_10S)
-// console.log(_11S)
-// console.log(_12S)
-// console.log(_13S)
-// console.log(_14S)
-// console.log(_15S)
-// console.log(_16S)
-// console.log(_17S)
-// console.log(_18S)
+
 
 _1e = document.getElementById('1e').innerHTML;
 _2e = document.getElementById('2e').innerHTML;
@@ -79,13 +62,13 @@ fils_content = document.getElementById('fils').innerHTML;
 
 
 if(group.trim() == "one"){
-btn="<button  id='conjBtn' style='display:none ; background-color:#8bc787; ' type='button' class='collapsibleStyle collapsible '>conjugations <img class='icon3' src='arrow3.png'/> </button>";
+btn="<button  id='conjBtn' style='display:none ; background-color:#8bc787; ' type='button' class=' collapsible '>conjugations <img class='card-attachment__title__icon--small' src='arrow3.png'/> </button>";
 }
 if(group.trim() == "two"){
-btn="<button id='conjBtn' style='display:none ;background-color:#d7e4fc; color:#0c386b; ' type='button' class='collapsibleStyle collapsible '>conjugations <img class='icon3' src='arrow3.png'/> </button>";
+btn="<button id='conjBtn' style='display:none ;background-color:#d7e4fc; color:#0c386b; ' type='button' class=' collapsible '>conjugations <img class='card-attachment__title__icon--small' src='arrow3.png'/> </button>";
 }
 if(group.trim() == "three"){
-btn="<button id='conjBtn' style='display:none ;background-color:#fcb3b3; color:#a6082b; ' type='button' class='collapsibleStyle collapsible '>conjugations <img class='icon3' src='arrow3.png'/> </button>"
+btn="<button id='conjBtn' style='display:none ;background-color:#fcb3b3; color:#a6082b; ' type='button' class=' collapsible '>conjugations <img class='card-attachment__title__icon--small' src='arrow3.png'/> </button>"
 }
 
 
@@ -114,38 +97,38 @@ if (group){
 
 conjExamples = `
 <div id ="present" style="display:none" >
-<div  class =' miniCard' id ='miniVerbCard' > <span style="font-size:25px; color:red"><b>`+ Pje+'</b></span> <br>' +_1e +"<iframe src='../silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls=''  preload='none' type='audio/mp3'> <source src=../"+_1S+"></audio>"  + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Ptu+'</b></span> <br>'  +_2e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_2S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Pil+'</b></span> <br>'  +_3e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_3S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Pnous+'</b></span> <br>'  +_4e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_4S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Pvous+'</b></span> <br>'  +_5e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_5S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Pils+'</b></span> <br>'  +_6e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_6S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' > <span style="font-size:25px; color:red"><b>`+ Pje+'</b></span> <br>' +_1e +"<iframe src='../silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls=''  preload='none' type='audio/mp3'> <source src=../"+_1S+"></audio>"  + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Ptu+'</b></span> <br>'  +_2e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_2S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Pil+'</b></span> <br>'  +_3e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_3S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Pnous+'</b></span> <br>'  +_4e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_4S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Pvous+'</b></span> <br>'  +_5e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_5S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ Pils+'</b></span> <br>'  +_6e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_6S+"></audio>" + ` </div>
 </div>
 
 <div id ="PC" style="display:none" >
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCje+'</b></span> <br>'  +_7e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_7S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCtu+'</b></span> <br>'  +_8e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_8S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCil+'</b></span> <br>'  +_9e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_9S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCnous+'</b></span> <br>'  +_10e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_10S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCvous+'</b></span> <br>'  +_11e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_11S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCils+'</b></span> <br>'  +_12e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_12S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCje+'</b></span> <br>'  +_7e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_7S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCtu+'</b></span> <br>'  +_8e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_8S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCil+'</b></span> <br>'  +_9e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_9S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCnous+'</b></span> <br>'  +_10e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_10S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCvous+'</b></span> <br>'  +_11e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_11S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ PCils+'</b></span> <br>'  +_12e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_12S+"></audio>" + ` </div>
 </div>
 
 
 <div id ="future" style="display:none" >
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fje+'</b></span> <br>'  +_13e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_13S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ ftu+'</b></span> <br>'  +_14e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_14S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fil+'</b></span> <br>'  +_15e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_15S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fnous+'</b></span> <br>'  +_16e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_16S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fvous+'</b></span> <br>'  +_17e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_17S+"></audio>" + ` </div>
-<div  class =' miniCard' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fils+'</b></span> <br>'  +_18e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_18S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fje+'</b></span> <br>'  +_13e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_13S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ ftu+'</b></span> <br>'  +_14e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_14S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fil+'</b></span> <br>'  +_15e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_15S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fnous+'</b></span> <br>'  +_16e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_16S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fvous+'</b></span> <br>'  +_17e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_17S+"></audio>" + ` </div>
+<div  class =' verb-conj-mini-card' id ='miniVerbCard' ><span style="font-size:25px; color:red"><b>`+ fils+'</b></span> <br>'  +_18e + "<iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' preload='none' type='audio/mp3'> <source src=../"+_18S+"></audio>" + ` </div>
 
 `
 
 
 document.getElementById("conjugations").innerHTML = btn+
 `
-<div id="verbTBL" class='content verbBackground'>
+<div id="verbTBL" class='verb-table-content verbBackground'>
 <div class='divTable minimalistBlack'>
 <div class='divTableHeading'>
 <div class='divTableRow'>
@@ -205,10 +188,9 @@ document.getElementById("conjBtn").addEventListener("click", function() {
   if(document.getElementById('verbTBL').style.display =="none"){
     document.getElementById('conjEx').innerHTML = ""
     document.getElementById('verbTBL').style.display ="block"
-    // document.getElementById('present').style.display ="none"
-    // document.getElementById('PC').style.display ="none"
-    // document.getElementById('future').style.display ="none"
+
   }
+
 });
 
 var times = document.getElementsByClassName("time");
@@ -244,6 +226,7 @@ var checkPOS = document.getElementById('oPOS');
 
 conjCheck.addEventListener('change', function() {
   if (conjCheck.checked == true){
+
       verbTable.style.display = "block";
       conjBtn.style.display = "block";
       document.getElementById('imgcontainer').style.display="none"
@@ -252,14 +235,14 @@ conjCheck.addEventListener('change', function() {
       for (i = 0 ; i < seprators.length ; i++){
         seprators[i].style.display="none"
       }
-      document.getElementById('brIcon').style.display="none"
+      document.getElementById('previousIcon').style.display="none"
       document.getElementById('frenchExamble').style.display="none"
       document.getElementById('nxtIcon').style.display="none"
       document.getElementById('noOfEx').style.display="none"
       document.getElementById('englishExample').style.display="none"
       document.getElementById('exampleSound').style.display="none"
       document.getElementById('wordSound').style.display="none"
-      document.getElementsByClassName('no-mobile')[0].style.display="none"
+      document.getElementsByClassName('attachments')[0].style.display="none"
 
       checkEX.disabled = true
       checkIPA.disabled = true
@@ -267,6 +250,7 @@ conjCheck.addEventListener('change', function() {
 
   }
   else{
+
     verbTable.style.display = "none";
     conjBtn.style.display = "none";
     document.getElementById('conjEx').innerHTML = ""
@@ -281,14 +265,14 @@ conjCheck.addEventListener('change', function() {
     }
     document.getElementById('frenchExamble').style.display="inline-block"
     if(checkEX.checked == true){
-      document.getElementById('brIcon').style.display="inline-block"
+      document.getElementById('previousIcon').style.display="inline-block"
       document.getElementById('nxtIcon').style.display="inline-block"
       document.getElementById('noOfEx').style.display="block"
     }
     document.getElementById('englishExample').style.display="inline-block"
     document.getElementById('exampleSound').style.display="inline-block"
     document.getElementById('wordSound').style.display="inline-block"
-    document.getElementsByClassName('no-mobile')[0].style.display="block"
+    document.getElementsByClassName('attachments')[0].style.display="block"
 
     checkEX.disabled = false
     checkIPA.disabled = false

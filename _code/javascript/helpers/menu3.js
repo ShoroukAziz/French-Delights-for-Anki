@@ -2,6 +2,7 @@
 var checkIPA = document.getElementById('oIPA');
 var checkPOS = document.getElementById('oPOS');
 var checkEX = document.getElementById('oEX');
+var checkMut = document.getElementById('oMut');
 
 if (window.checkedIPA  === undefined){
   window.checkedIPA = false;
@@ -20,13 +21,23 @@ if (window.checkedEX  === undefined){
 }
 
 
+if (window.checkMut  === undefined){
+  window.checkMut = true;
+  checkMut.checked = true;
+}
+
+
 check(window.checkedIPA);
 check2(window.checkedPOS);
 checkx(window.checkedEX);
+checkM(window.checkMut);
+
 
 checkIPA.checked = window.checkedIPA
 checkPOS.checked = window.checkedPOS
 checkEX.checked = window.checkedEX
+checkMut.checked = window.checkMut
+
 
 checkIPA.addEventListener('change', function() {
     window.checkedIPA = checkIPA.checked;
@@ -44,6 +55,12 @@ checkEX.addEventListener('change', function() {
     checkx(checkEX.checked);
 });
 
+
+checkMut.addEventListener('change', function() {
+    window.checkMut = document.getElementById('oMut').checked;
+    checkM(window.checkMut);
+});
+
 function check(checker) {
     if(checker == true) {
         document.getElementsByClassName("ipa")[0].style.display = "block";
@@ -55,9 +72,9 @@ function check(checker) {
 function check2(checker) {
 
     if(checker == true) {
-         document.getElementsByClassName("corner")[0].style.display = "block";
+         document.getElementsByClassName("type-corner")[0].style.display = "block";
     } else if (checker == false) {
-         document.getElementsByClassName("corner")[0].style.display = "none";
+         document.getElementsByClassName("type-corner")[0].style.display = "none";
     }
 }
 
@@ -69,16 +86,26 @@ function checkx(checker) {
             checkEX.checker = false;
           }
           else{
-            document.getElementById("brIcon").style.display = "inline-block";
+            document.getElementById("previousIcon").style.display = "inline-block";
             document.getElementById("nxtIcon").style.display = "inline-block";
             document.getElementById("noOfEx").style.display = "block";
           }
 
     } else if (checker == false) {
 
-          document.getElementById("brIcon").style.display = "none";
+          document.getElementById("previousIcon").style.display = "none";
           document.getElementById("nxtIcon").style.display = "none";
           document.getElementById("noOfEx").style.display = "none";
+    }
+
+}
+
+
+function checkM(checker) {
+    if(checker == true) {
+        document.getElementsByClassName("card-maturity")[0].style.display = "block";
+    } else if (checker == false) {
+        document.getElementsByClassName("card-maturity")[0].style.display = "none";
     }
 
 }
