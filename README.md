@@ -29,6 +29,7 @@ The full versions work best with [MEPR addon](https://github.com/ShoroukAziz/mul
       * [Menu 3](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-Menu-3)
    * [The Search buttons](https://github.com/ShoroukAziz/French-Delights-for-Anki/wiki/The-Features-:-The-Search-buttons)
    * [Maturity state Indecator](Anki)
+   * Additionally, the templates are responsive so you can use them on your phone or tablet too.
  ___
 
 
