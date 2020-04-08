@@ -1,6 +1,5 @@
 # French Delights for Anki
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-<a title="Buy me a coffee :)" href="https://ko-fi.com/shorouk"><img src="https://img.shields.io/badge/ko--fi-contribute-%23579ebd.svg"></a>
 
   <img style="margin:15px;" align="right" src="https://raw.githubusercontent.com/ShoroukAziz/French-Delights-for-Anki/master/screenshots/logo.png" width="200px"  >
 
@@ -56,4 +55,4 @@ The full versions work best with [MEPR addon](https://github.com/ShoroukAziz/mul
 
 <br>
 
- [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/)
+ [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/) [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B51L5RI)
