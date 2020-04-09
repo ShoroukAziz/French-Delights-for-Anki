@@ -6,16 +6,10 @@
   ##### A Collections of Template for Anki.
 
   This is a set of models (Templates) for
-  [Anki](https://apps.ankiweb.net/). Minly, for learning the French language (could also be used with other languages but with less features).<br>
-<b>Theset contains 4 versions:</b> <br>
-<ul>
-<li> French delights - French - full version
-<li> French delights - French - light version
-<li> French delights - Other languages - full version
-<li> French delights - Other languages - light version
-</ul>
+  [Anki](https://apps.ankiweb.net/). Minly, for learning the French language (could also be used with other languages [The light version] but with less features).<br>
 
-The full versions work best with [MEPR addon](https://github.com/ShoroukAziz/multiple-examples-per-note) so check it out.
+
+The full version works best and designed for the [MEPR addon](https://github.com/ShoroukAziz/multiple-examples-per-note) so check it out.
 
 **Detailed description of the models can be found in the [wiki](https://github.com/ShoroukAziz/Anki-French-Delights/wiki) and Discussion goes here at [reddit]() or at my [blog]()**
 ---
