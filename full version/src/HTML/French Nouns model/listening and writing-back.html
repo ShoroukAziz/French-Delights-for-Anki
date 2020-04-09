@@ -1,9 +1,5 @@
-
-<link rel="stylesheet" type="text/css" href="_code/_frenchCSS.css">
-
-
-
-
+<link rel="stylesheet" type="text/css" href="_french-delights/CSS/french-delights.css">
+<script type="text/javascript" src="_french-delights/JavaScript/main.js"></script>
 
 <div  id="container"  >
 <div id="ribbon" ></div>
@@ -34,7 +30,7 @@
  <p class="ipa" >{{IPA}}</p>
 
 <div id = "translation" class= "translation " >
-  <img class="translation__icon"  src="engico.png"/>
+  <img class="translation__icon"  src="_french-delights/assets/icons/engico.png"/>
   <span class="translationText">{{translation}} </span>
 </div>
 
@@ -42,11 +38,11 @@
 <hr class="separator separator--line" />
 {{/french example}}
 
-<img id="previousIcon" class="examples__icon examples__icon--previous" onclick="previousExample()" style="" src="_code/_arrow_left.png" />
+<img id="previousIcon" class="examples__icon examples__icon--previous" onclick="previousExample()" style="" src="_french-delights/assets/icons/_arrow_left.png" />
 <div style="display:inline-block" id="frenchExamble" class="examples ">
   {{french example}}
 </div>
-<img id="nxtIcon" class="examples__icon examples__icon--next" onclick="nextExample()"  src="_code/_arrow_right.png" />
+<img id="nxtIcon" class="examples__icon examples__icon--next" onclick="nextExample()"  src="_french-delights/assets/icons/_arrow_right.png" />
 <div id="noOfEx"> </div>
 {{#english example}}
 <hr class="separator separator--line" />
@@ -108,7 +104,7 @@ if (document.getElementById('extraField')){
   p1 =  `
   <div name="extraOptions" style="display:none" id="extraDiv">
   <button  type='button' class=' card-attachment__title  card-attachment__title--extra'> etymology  &nbsp
-    <img  class='card-attachment__title__icon card-attachment__title__icon--small' src='_code/_rooticon.png'/>&nbsp and extra  </button>
+    <img  class='card-attachment__title__icon card-attachment__title__icon--small' src='_french-delights/assets/icons/_rooticon.png'/>&nbsp and extra  </button>
   <div id="extra" class="card-attachment__body card-attachment__body--extra" >`+extra+`</div>
   </div>
    `
@@ -122,7 +118,7 @@ if (document.getElementById('mnemonicField')){
 
   <div name="extraOptions" style="display:none" id="mnemonicDiv">
   <button  type='button' class=' card-attachment__title card-attachment__title--mnemonic '>
-  <img  class='card-attachment__title__icon card-attachment__title__icon--med' src='_code/_brain1.png'/>&nbsp &nbsp mnemonic </button>
+  <img  class='card-attachment__title__icon card-attachment__title__icon--med' src='_french-delights/assets/icons/_brain1.png'/>&nbsp &nbsp mnemonic </button>
   <div id ="mnemonic" class ='card-attachment__body card-attachment__body--mnemonic' > `+ mnemonic+` </div>
   </div>
 
@@ -139,7 +135,7 @@ if(document.getElementById('tagsField')){
 
   <div name="extraOptions" style="display:none" id="tagsDiv">
   <button  type='button' class=' card-attachment__title card-attachment__title--tags '>
-  <img class='card-attachment__title__icon card-attachment__title__icon--med' src='_code/_ptag.png'/>&nbsp &nbsp tags </button>
+  <img class='card-attachment__title__icon card-attachment__title__icon--med' src='_french-delights/assets/icons/_ptag.png'/>&nbsp &nbsp tags </button>
   <div id="tagsText" class ='card-attachment__body card-attachment__body--tags'  >`+tags+`</div>
   </div>
   `
@@ -160,12 +156,12 @@ document.getElementsByClassName('attachments')[0].appendChild(div_attachments);
 var divs = document.createElement('div');
 divs.className='card-maturity'
 divs.innerHTML = `
-<img id="star1" class="card-maturity__star-icon" src="_code/_star.png">
-<img id="star2" class="card-maturity__star-icon" src="_code/_star.png">
-<img id="star3" class="card-maturity__star-icon" src="_code/_star.png">
-<img id="nostar1" class="card-maturity__star-icon" src="_code/_star_dim.png">
-<img id="nostar2" class="card-maturity__star-icon" src="_code/_star_dim.png">
-<img id="nostar3" class="card-maturity__star-icon" src="_code/_star_dim.png">
+<img id="star1" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
+<img id="star2" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
+<img id="star3" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
+<img id="nostar1" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
+<img id="nostar2" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
+<img id="nostar3" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
 <!-- <p id="star-msg" class="card-maturity__text"> </p> -->
 `
 
@@ -203,22 +199,22 @@ var p1
 var p2
 var p3
 if(extra){
-    p1 = `<img name="options" id="root" class='menu2-icon' src='_code/_rooticon.png'/>`
+    p1 = `<img name="options" id="root" class='menu2-icon' src='_french-delights/assets/icons/_rooticon.png'/>`
 }
 else{
-  p1 = ` <img  class='menu2-icon' src='_code/_rooticonoff.png'/>`
+  p1 = ` <img  class='menu2-icon' src='_french-delights/assets/icons/_rooticonoff.png'/>`
 }
 if(mnemonic){
-  p2= `<img name="options" id="brain" class='menu2-icon' src='_code/_brain1.png'/>`
+  p2= `<img name="options" id="brain" class='menu2-icon' src='_french-delights/assets/icons/_brain1.png'/>`
 }
 else{
-  p2= `<img  class='menu2-icon' src='_code/_brain1off.png'/>`
+  p2= `<img  class='menu2-icon' src='_french-delights/assets/icons/_brain1off.png'/>`
 }
 if(tags){
-  p3= `<img name="options" id="tagsico" class='menu2-icon' src='_code/_ptag.png'/>`
+  p3= `<img name="options" id="tagsico" class='menu2-icon' src='_french-delights/assets/icons/_ptag.png'/>`
 }
 else{
-  p3= `<img  class='menu2-icon' src='_code/_ptag.pngoff.png'/>`
+  p3= `<img  class='menu2-icon' src='_french-delights/assets/icons/assets/icons/_ptag.pngoff.png'/>`
 }
 
 
@@ -227,13 +223,13 @@ else{
 var m = document.createElement('div');
 m.innerHTML = `
 <div class='menu__head__icon--open'>
-<img class="menu__head__icon--open" src="_code/menu.png">
+<img class="menu__head__icon--open" src="_french-delights/assets/icons/menu.png">
 </div>
 
 <div class="menu_hidable">
 
 <div class="menu-head">
-<img class="menu__head__icon" src="_code/close.png">
+<img class="menu__head__icon" src="_french-delights/assets/icons/close.png">
 Options Menu
 </div>
 
@@ -289,7 +285,7 @@ IPA
 Note Extras
 </p>
 <div class="menu menu--2'">
-<img name="options" id="noteOnly" class='menu2-icon' src='_code/_note.png'/>
+<img name="options" id="noteOnly" class='menu2-icon' src='_french-delights/assets/icons/_note.png'/>
 ` + p1 + p2 + p3 + `</div>
 
 
@@ -301,6 +297,3 @@ Note Extras
 document.getElementsByClassName('menus')[0].appendChild(m);
 
 </script>
-
-
-<script type="text/javascript" src="_code/javascript/main.js"></script>

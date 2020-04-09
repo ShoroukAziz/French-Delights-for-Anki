@@ -34,13 +34,13 @@ The full version works best and designed for the [MEPR addon](https://github.com
 
 ### Installation :
  #### To install the light version:
-  * Download [this file](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/light%20version/_code.rar), extract the content. and, copy the  **_code** folder into your **collection.media** folder.
+  * Download [this file](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/light%20version/_french-delights.rar), extract the content. and, copy the  **_french-delights** folder into your **collection.media** folder.
   *   Download and import [French-light.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/light%20version/French-light.apkg) into Anki.
 
 #### To install the full version :
   * Make sure you installed the dependencies.
   * Download the plugin.
-  * Download [this file](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/_code.rar) extract the content. and, copy the  **_code** folder into your **collection.media** folder.
+  * Download [this file](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/_french-delights.rar) extract the content. and, copy the  **_french-delights** folder into your **collection.media** folder.
   * Download and import both [French sentence Bank.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/French%20sentence%20Bank.apkg) and [French.apkg](https://github.com/ShoroukAziz/Anki-French-Delights/raw/master/French.apkg) into Anki.
 
   <p   align="center" >
