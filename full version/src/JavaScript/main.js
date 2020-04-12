@@ -1,4 +1,3 @@
-
 /************************************************************************/
  pairs = [ ['alt','alte'] , ['arian','aire'] ,  ['gen','gène'] , ['graph','graphe'] , ['ic','ique'] , ['isk','isque'] , ['ism','isme'],
 ['ist','iste'] , ['meter','mètre'] , ['mony','monie'] , ['oid' , 'oide'] , ['or' , 'eur'] , ['ot' , 'ote'] , ['sis' , 'se'] , ['ter' , 'tre'],
@@ -15,6 +14,8 @@
 
  plPairs = [['aux','al'],['oux','ou'],['aux','ail'],['aux','au'],['eaux','eau'],['s','s'],['x','x'],['z','z']]
 
+verb_pairs=[ ['ate','er'] , ['fy','fier'] ,  ['ise','iser'] , ['e','er']
+]
 /***************************************************************************/
 
 // Helpers functions
@@ -45,8 +46,31 @@ translation = strip(html_translation.trim());
 
 /******************************************/
 
+if (type.includes('verb') && type != 'adverb'){
+  document.getElementById("o4").disabled = true;
+  document.getElementById("o4").parentElement.style.color = '#4f5154';
+  document.getElementById("o5").disabled = true;
+  document.getElementById("o5").parentElement.style.color = '#4f5154';
+}
+/******************************************/
+//remove new line at the end of audio fields
+if(document.getElementById('wordSound')){
+  if(document.getElementById('wordSound').innerHTML.endsWith('<br>'))
+  document.getElementById('wordSound').innerHTML=document.getElementById('wordSound').innerHTML.slice(0,-4)
+}
+if(document.getElementById('exampleSound')){
+  if(document.getElementById('exampleSound').innerHTML.endsWith('<br>'))
+  document.getElementById('exampleSound').innerHTML=document.getElementById('exampleSound').innerHTML.slice(0,-4)
+}
+/******************************************/
 if(document.getElementsByClassName('feminin')[0]){
+  if(document.getElementsByClassName('feminin')[0].innerHTML.trim()){
     fem = strip(document.getElementsByClassName('feminin')[0].innerHTML.trim())
+  }
+  else{
+    fem = null
+  }
+
 }
 else{
   fem = null
@@ -567,10 +591,33 @@ function markCustome(){
   }
 }
 
+function markVerbEnding(){
+
+  org_html = strip(document.getElementById("word").innerHTML)
+  group = document.getElementById("group").innerHTML;
+  var lastChar = org_html[org_html.length -1];
+  var start = org_html.slice(0,-2);
+  var lastChar = org_html.slice(-2);
+  if (group.trim() == "one") {
+
+  new_html = start+ "<span class='verb-first-group-ending'>" + lastChar + "</span>";
+  document.getElementById("word").innerHTML = new_html;
+  }
+  else if (group.trim() == "two") {
+  new_html = start+ "<span class='verb-second-group-ending'>" + lastChar + "</span>";
+  document.getElementById("word").innerHTML = new_html;
+  }
+  else if (group.trim() == "three") {
+  new_html = start+ "<span class='verb-third-group-ending'>" + lastChar + "</span>";
+  document.getElementById("word").innerHTML = new_html;
+  }
+}
+
+
 function unMark(){
   document.getElementById("ribbon").className="";
   document.getElementsByClassName('translationText')[0].innerHTML = translation
-  if(  document.getElementsByClassName('word')[0] && type.includes('noun')){
+  if(  document.getElementsByClassName('word')[0] && type.includes('noun') && (!type.includes('fem') && !type.includes('mas') )  ){
     document.getElementsByClassName('word')[0].innerHTML = word
   }
   if(document.getElementById('word'))
@@ -581,6 +628,7 @@ function unMark(){
   }
 
   if(fem){
+    console.log(fem)
     document.getElementsByClassName('feminin')[0].innerHTML = strip(fem)
   }
 
@@ -617,69 +665,6 @@ function displaypPlural(){
           document.getElementById('plural').style.display=('block')
          document.getElementsByClassName("masculine")[0].innerHTML = word2
   }
-
-// if(document.getElementsByClassName('plural')[0]){
-//
-//   if(plural!=""){
-//
-//       siblings = isSibling (word , plural , plPairs)
-//       if (siblings ){
-//           pluralText = markSiplingsEnding(word ,plural,siblings[0],siblings[1],'#0099cc')[1]
-//           word2 = markSiplingsEnding(word ,plural,siblings[0],siblings[1],'#0099cc')[0]
-//       }
-//       else if (word+'s' == plural){
-//
-//         pluralText = plural.slice(0,-1)+"<span style='color:#0099cc'><u>s</u></span>"
-//         word2 = word
-//       }
-//       else{
-//         pluralText = plural
-//         word2 = word
-//       }
-//
-//       var pluralText = word2 +"&nbsp <img class='plural-arrow-icon' src='arrow1.png'/>&nbsp"+ pluralText;
-//       document.getElementsByClassName("word")[0].innerHTML = pluralText
-//
-//
-//
-//       if(document.getElementById("word"))
-//       document.getElementById("word").innerHTML = pluralText
-//       else if(document.getElementsByClassName("word")[0])
-//         document.getElementsByClassName("word")[0].innerHTML = pluralText
-//   }
-//
-// }
-// else if (document.getElementsByClassName('plural')[0]){
-//
-//   if(document.getElementById('pluralM')){
-//     var pluralM = strip((document.getElementById('pluralM').innerHTML).trim());
-//     siblings = isSibling (word , pluralM , plPairs)
-//     if (siblings ){
-//
-//         pluralText = markSiplingsEnding(word ,pluralM,siblings[0],siblings[1],'#0099cc')[1]
-//         word2 = markSiplingsEnding(word ,pluralM,siblings[0],siblings[1],'#0099cc')[0]
-//     }
-//     else if (word+'s' == pluralM){
-//
-//       pluralText = pluralM.slice(0,-1)+"<span style='color:#0099cc'><u>s</u></span>"
-//       word2 = word
-//
-//     }
-//     else{
-//       pluralText = pluralM
-//       word2 = word
-//
-//     }
-//
-//     document.getElementById('pluralM').innerHTML = pluralText
-//     document.getElementsByClassName("masculine")[0].innerHTML = word2
-//
-//
-//   }
-//
-//
-//   document.getElementsByClassName('plural')[0].style.display='block'
-// }
 
 }
 /***************************************************************************************/
@@ -725,6 +710,12 @@ function displaypPlural(){
     }
     else if (id == 'o2') {
       unMark()
+      if(type.includes('verb') && type!= 'adverb'){
+        markVerbEnding();
+      }
+      else{
+          mark();
+      }
       mark();
     }
     else if (id == 'o3') {
