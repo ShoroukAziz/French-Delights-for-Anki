@@ -1,7 +1,7 @@
 
 var script = document.createElement('script');
 script.type = 'text/javascript';
-script.src = '_french-delights/JavaScript/helpers/verb_conj.js';
+script.src = '_french-delights/JavaScript/helpers/verb_conj2.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 /******************************************************************************************************************/

@@ -36,6 +36,7 @@ function strip(html){
 // the word the HTML styling tags
 var html_word =document.getElementById('word').innerHTML.trim();
 word = strip(html_word.trim());
+var type = document.getElementsByClassName('type')[0].innerHTML.trim();
 
 // the translation with the HTML styling tags
 var html_translation = document.getElementsByClassName('translationText')[0].innerHTML;
@@ -53,17 +54,19 @@ else{
   document.getElementById("o4").parentElement.style.color = '#4f5154';
 }
 
-if(document.getElementById('pluralM')){
-    pluralM = strip(document.getElementById('pluralM').innerHTML.trim())
-}
-else if(document.getElementsByClassName('noun-plural')[0]){
+if(document.getElementById('plural')){
+    plural = strip(document.getElementById('plural').innerHTML.trim())
 
-    // for nouns
-     //pass
+
+    if (plural == ""){
+      plural = null
+      document.getElementById("o5").disabled = true;
+      document.getElementById("o5").parentElement.style.color = '#4f5154';
+    }
 }
 else{
-  // for verbs and adverbs
-  pluralM = null
+  // for verbs a
+  plural = null
   document.getElementById("o5").disabled = true;
   document.getElementById("o5").parentElement.style.color = '#4f5154';
 }
@@ -567,7 +570,9 @@ function markCustome(){
 function unMark(){
   document.getElementById("ribbon").className="";
   document.getElementsByClassName('translationText')[0].innerHTML = translation
-  //document.getElementsByClassName('word')[0].innerHTML = word
+  if(  document.getElementsByClassName('word')[0] && type.includes('noun')){
+    document.getElementsByClassName('word')[0].innerHTML = word
+  }
   if(document.getElementById('word'))
   document.getElementById('word').innerHTML = word
 
@@ -586,70 +591,95 @@ function unMark(){
 }
 
 function displaypPlural(){
+  siblings = isSibling (word , plural , plPairs)
+  if (siblings ){
+      pluralText = markSiplingsEnding(word ,plural,siblings[0],siblings[1],'#0099cc')[1]
+      word2 = markSiplingsEnding(word ,plural,siblings[0],siblings[1],'#0099cc')[0]
+  }
+  else if (word+'s' == plural){
 
-if(document.getElementsByClassName('noun-plural')[0]){
-
-  var plural = strip((document.getElementsByClassName('noun-plural')[0].innerHTML).trim());
-
-  if(plural!=""){
-
-      siblings = isSibling (word , plural , plPairs)
-      if (siblings ){
-          pluralText = markSiplingsEnding(word ,plural,siblings[0],siblings[1],'#0099cc')[1]
-          word2 = markSiplingsEnding(word ,plural,siblings[0],siblings[1],'#0099cc')[0]
-      }
-      else if (word+'s' == plural){
-
-        pluralText = plural.slice(0,-1)+"<span style='color:#0099cc'><u>s</u></span>"
-        word2 = word
-      }
-      else{
-        pluralText = plural
-        word2 = word
-      }
-
-      var pluralText = word2 +"&nbsp <img class='plural-arrow-icon' src='arrow1.png'/>&nbsp"+ pluralText;
-
-      if(document.getElementById("word"))
-      document.getElementById("word").innerHTML = pluralText
-      else if(document.getElementsByClassName("word")[0])
-        document.getElementsByClassName("word")[0].innerHTML = pluralText
+    pluralText = plural.slice(0,-1)+"<span style='color:#0099cc'><u>s</u></span>"
+    word2 = word
+  }
+  else{
+    pluralText = plural
+    word2 = word
   }
 
+  if (type.includes('noun')){
 
-
-}
-else if (document.getElementsByClassName('plural')[0]){
-
-  if(document.getElementById('pluralM')){
-    var pluralM = strip((document.getElementById('pluralM').innerHTML).trim());
-    siblings = isSibling (word , pluralM , plPairs)
-    if (siblings ){
-
-        pluralText = markSiplingsEnding(word ,pluralM,siblings[0],siblings[1],'#0099cc')[1]
-        word2 = markSiplingsEnding(word ,pluralM,siblings[0],siblings[1],'#0099cc')[0]
-    }
-    else if (word+'s' == pluralM){
-
-      pluralText = pluralM.slice(0,-1)+"<span style='color:#0099cc'><u>s</u></span>"
-      word2 = word
-
-    }
-    else{
-      pluralText = pluralM
-      word2 = word
-
-    }
-
-    document.getElementById('pluralM').innerHTML = pluralText
-    document.getElementsByClassName("masculine")[0].innerHTML = word2
-
-
+    var pluralText = word2 +"&nbsp <img class='plural-arrow-icon' src='arrow1.png'/>&nbsp"+ pluralText;
+    document.getElementsByClassName("word")[0].innerHTML = pluralText
+  }
+  else{
+        console.log('here')
+         document.getElementById('plural').innerHTML = pluralText
+          document.getElementById('plural').style.display=('block')
+         document.getElementsByClassName("masculine")[0].innerHTML = word2
   }
 
-
-  document.getElementsByClassName('plural')[0].style.display='block'
-}
+// if(document.getElementsByClassName('plural')[0]){
+//
+//   if(plural!=""){
+//
+//       siblings = isSibling (word , plural , plPairs)
+//       if (siblings ){
+//           pluralText = markSiplingsEnding(word ,plural,siblings[0],siblings[1],'#0099cc')[1]
+//           word2 = markSiplingsEnding(word ,plural,siblings[0],siblings[1],'#0099cc')[0]
+//       }
+//       else if (word+'s' == plural){
+//
+//         pluralText = plural.slice(0,-1)+"<span style='color:#0099cc'><u>s</u></span>"
+//         word2 = word
+//       }
+//       else{
+//         pluralText = plural
+//         word2 = word
+//       }
+//
+//       var pluralText = word2 +"&nbsp <img class='plural-arrow-icon' src='arrow1.png'/>&nbsp"+ pluralText;
+//       document.getElementsByClassName("word")[0].innerHTML = pluralText
+//
+//
+//
+//       if(document.getElementById("word"))
+//       document.getElementById("word").innerHTML = pluralText
+//       else if(document.getElementsByClassName("word")[0])
+//         document.getElementsByClassName("word")[0].innerHTML = pluralText
+//   }
+//
+// }
+// else if (document.getElementsByClassName('plural')[0]){
+//
+//   if(document.getElementById('pluralM')){
+//     var pluralM = strip((document.getElementById('pluralM').innerHTML).trim());
+//     siblings = isSibling (word , pluralM , plPairs)
+//     if (siblings ){
+//
+//         pluralText = markSiplingsEnding(word ,pluralM,siblings[0],siblings[1],'#0099cc')[1]
+//         word2 = markSiplingsEnding(word ,pluralM,siblings[0],siblings[1],'#0099cc')[0]
+//     }
+//     else if (word+'s' == pluralM){
+//
+//       pluralText = pluralM.slice(0,-1)+"<span style='color:#0099cc'><u>s</u></span>"
+//       word2 = word
+//
+//     }
+//     else{
+//       pluralText = pluralM
+//       word2 = word
+//
+//     }
+//
+//     document.getElementById('pluralM').innerHTML = pluralText
+//     document.getElementsByClassName("masculine")[0].innerHTML = word2
+//
+//
+//   }
+//
+//
+//   document.getElementsByClassName('plural')[0].style.display='block'
+// }
 
 }
 /***************************************************************************************/
@@ -904,7 +934,6 @@ function checkx(checker) {
 
   /****************************************************************************************/
   /*Change the card's background color according to its type*/
-  var type = document.getElementsByClassName('type')[0].innerHTML.trim();
   if (type.includes('feminine') && type.includes('masculine')){
     document.getElementById("container").className = "both__background";
     document.getElementById("imgcontainer").className = "both__image";
