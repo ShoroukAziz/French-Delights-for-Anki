@@ -144,9 +144,7 @@ function generate_card(dict){
   conjCheck.addEventListener('change', function() {
     if (conjCheck.checked == true){
 
-      // x = document.getElementsByTagName('body')[0].className
-      // x = x.replace('card' , 'conj-card')
-      //   document.getElementsByTagName('body')[0].className = x
+
       document.getElementsByTagName('body')[0].classList.add('conj-card')
       document.getElementsByTagName('body')[0].classList.remove('card')
 
@@ -170,17 +168,16 @@ function generate_card(dict){
         document.getElementById('wordSound').style.display="none"
         document.getElementsByClassName('attachments')[0].style.display="none"
 
+        if(document.getElementsByClassName('typed')[0]){
+          document.getElementsByClassName('typed')[0].style.display="none"
+        }
+
         checkEX.disabled = true
         checkIPA.disabled = true
         checkPOS.disabled = true
 
     }
     else{
-
-
-      // x = document.getElementsByTagName('body')[0].className
-      // x = x.replace('conj-card' , 'card')
-      // document.getElementsByTagName('body')[0].className = x
 
       document.getElementsByClassName("conj-menus")[0].classList.remove('block')
       document.getElementsByClassName("conj-menus")[0].classList.add('hidden')
@@ -207,6 +204,10 @@ function generate_card(dict){
       document.getElementById('exampleSound').style.display="inline-block"
       document.getElementById('wordSound').style.display="inline-block"
       document.getElementsByClassName('attachments')[0].style.display="block"
+
+      if(document.getElementsByClassName('typed')[0]){
+        document.getElementsByClassName('typed')[0].style.display="block"
+      }
 
       checkEX.disabled = false
       checkIPA.disabled = false
