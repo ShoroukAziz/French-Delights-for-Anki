@@ -17,7 +17,9 @@
 verb_pairs=[ ['ate','er'] , ['fy','fier'] ,  ['ise','iser'] , ['e','er']
 ]
 /***************************************************************************/
-
+// restore card size (for when changed to display verb conjs)
+// change to make responsi
+document.getElementsByClassName("card")[0].style.width='52%'
 // Helpers functions
 
 String.prototype.removeAt=function(index) {

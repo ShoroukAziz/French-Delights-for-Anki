@@ -282,7 +282,7 @@ margin-top:6%;
 /****************************************************/
 
 
-/*used in Conjugations button - used in JS*/
+/*used in Conjugations button - used in javascript*/
 .collapsible {
 
   cursor: pointer;
@@ -505,6 +505,19 @@ font-size: 20px;
 
 }
 
+.conj-menus{
+  position: absolute;
+/* left: 1%;
+top: 25%; */
+right: 0%;
+top: 0%;
+min-height: 100%;
+min-width: 160px;
+background-color:#f3dcf5d4;
+font-size: 20px;
+
+}
+
 .menu-head{
   background-color: #7b717bfc;
   color: #fff;
@@ -520,7 +533,11 @@ font-size: 20px;
   width: 20px;
   margin-left: -15px;
   margin-right: 10px;
-
+}
+.menu__head__icon--right{
+  width: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .menu__head__icon--open{
@@ -548,14 +565,9 @@ cursor: pointer;
 }
 
 .menu{
-  /* position: absolute;
-  left: 15px; */
-  /* right: 80%; */
-  /* width: 18%; */
   font-size:15px;
   font-family:arial;
   text-align:left;
-  /* border: 2px solid rgb(212, 119, 143,0.3); */
 
 }
 .menu--1{
@@ -593,6 +605,11 @@ padding: 4.5px;
   /* flex: 1; */
   cursor: pointer;
 }
+
+.conj-menus{
+  display: none;
+}
+
 
 /***************************************************************/
 .card-maturity{
@@ -801,65 +818,47 @@ font-weight:bold;
 
 .verb-conj-mini-card{
     display: inline-block;
-    padding: 30px;
+    padding: 5px;
     overflow: hidden;
     background-color: #f1f1f1;
-    font-size: 25px;
+    font-size: 35px;
     font-family: myfont;
     text-align: center;
-    width: 320px;
-    height: 150px;
+    width: 28%;
+    min-height: 120px;
     border: 1px solid black;
     margin-top: 6px;
+
+}
+
+.verb-conj-mini-card__label{
+width: 30%;
+padding: 5px;
+display: inline-block;
+font-size: 20px;
+font-family: myfont;
+font-weight: bold;
+  color:blue;
+}
+.verb-conj-mini-card--left{
+  display: inline-block;
+  padding: 5px 5px 5px 5px;
+  overflow: hidden;
+  font-size: 20px;
+  font-family: myfont;
+  text-align: center;
+  min-height: 120px;
+  width: 5%;
+  line-height:120px;
+  color:red;
+  font-weight: bold;
 }
 /***************************************************************/
-
+#conjugations{
+  display:none;
+}
 
 /**************************************************************************/
-/*
-* Conj table
-*/
-
-div.minimalistBlack {
-  border: 0px solid #000000;
-  width: 100%;
-  text-align: center;
-  border-collapse: collapse;
-}
-.divTable.minimalistBlack .divTableCell, .divTable.minimalistBlack .divTableHead {
-  border: 1px solid #57662a;
-  padding: 5px 4px;
-}
-.divTable.minimalistBlack .divTableBody .divTableCell {
-  font-size: 28px;
-}
-.divTable.minimalistBlack .divTableCell:nth-child(odd) {
-  background: #efffed;
-}
-.divTable.minimalistBlack .divTableCell:nth-child(even) {
-  background: #ffffed;
-}
-.divTable.minimalistBlack .divTableHeading {
-  background-color: #b4cf63;
-  border-bottom: 3px solid #57662a;
-}
-.divTable.minimalistBlack .divTableHeading .divTableHead {
-  font-size: 25px;
-  font-weight: bold;
-  color: #000000;
-  text-align: center;
-}
-
-/* DivTable.com */
-.divTable{ display: table; }
-.divTableRow { display: table-row; }
-.divTableHeading { display: table-header-group;}
-.divTableCell, .divTableHead { display: table-cell;
-width:30%}
-.divTableHeading { display: table-header-group;}
-.divTableFoot { display: table-footer-group;}
-.divTableBody { display: table-row-group;}
-
 
 /**************************************************************************************************/
 @media only screen and (max-width: 1024px) {
