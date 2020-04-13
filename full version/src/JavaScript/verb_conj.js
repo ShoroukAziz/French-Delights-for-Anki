@@ -1,6 +1,12 @@
 var type = document.getElementsByClassName('type')[0].innerHTML.trim();
+var w = window.outerWidth;
+var body_inner = document.getElementsByTagName('body')[0].innerHTML
+var body_class = document.getElementsByTagName('body')[0].className
 
-if (type.includes('verb') && type != 'adverb'){
+
+
+
+if (type.includes('verb') && type != 'adverb' && window.outerWidth > 1200){
 
   group = document.getElementById('group').innerHTML;
   conjugations = document.getElementById('conjugationsDict').innerHTML
@@ -132,13 +138,23 @@ function generate_card(dict){
   var checkEX = document.getElementById('oEX');
   var checkPOS = document.getElementById('oPOS');
 
+
+
+
   conjCheck.addEventListener('change', function() {
     if (conjCheck.checked == true){
 
+      // x = document.getElementsByTagName('body')[0].className
+      // x = x.replace('card' , 'conj-card')
+      //   document.getElementsByTagName('body')[0].className = x
+      document.getElementsByTagName('body')[0].classList.add('conj-card')
+      document.getElementsByTagName('body')[0].classList.remove('card')
 
-        document.getElementsByClassName("card")[0].style.width='77%'
+      document.getElementsByClassName("conj-menus")[0].classList.remove('hidden')
+      document.getElementsByClassName("conj-menus")[0].classList.add('block')
+
+
         document.getElementById("conjugations").style.display='block'
-        document.getElementsByClassName("conj-menus")[0].style.display='block'
         document.getElementById('imgcontainer').style.display="none"
         document.getElementsByClassName('ipa')[0].style.display="none"
         document.getElementById('translation').style.display="none"
@@ -162,8 +178,15 @@ function generate_card(dict){
     else{
 
 
-      document.getElementsByClassName("card")[0].style.width='52%'
-      document.getElementsByClassName("conj-menus")[0].style.display='none'
+      // x = document.getElementsByTagName('body')[0].className
+      // x = x.replace('conj-card' , 'card')
+      // document.getElementsByTagName('body')[0].className = x
+
+      document.getElementsByClassName("conj-menus")[0].classList.remove('block')
+      document.getElementsByClassName("conj-menus")[0].classList.add('hidden')
+
+      document.getElementsByTagName('body')[0].classList.remove('conj-card')
+      document.getElementsByTagName('body')[0].classList.add('card')
 
       document.getElementById("conjugations").style.display='none'
       document.getElementById('imgcontainer').style.display="block"
@@ -192,6 +215,26 @@ function generate_card(dict){
     }
 
   });
+
+
+
+  // window.addEventListener('resize', function(event){
+  //   var w = window.outerWidth;
+  //
+  //   if(w > 1200){
+  //
+  //       func()
+  //   }
+  //   else{
+  //     document.getElementsByTagName('body')[0].innerHTML = body_inner
+  //     document.getElementsByTagName('body')[0].className = body_class
+  //
+  //   }
+  //
+  // });
+
+
+
 
 /************************************************************/
 

@@ -63,6 +63,21 @@ p{
   }
 }
 
+.conj-card{
+  width: 77% ;
+  background: url("../assets/backgrounds/_tbg.jpg");
+  font-size: 40px;
+  text-align: center;
+  color: black;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1200px) {
+  .conj-card{
+  width: 100%;
+  margin: 0 auto;
+  }
+}
 
 .frontCard{
 border:5px solid #777;
@@ -199,7 +214,6 @@ margin-top:6%;
 
   .examples{
     font-size:30px;
-    display: block !important;
   }
 }
 
@@ -505,18 +519,26 @@ font-size: 20px;
 
 }
 
+
 .conj-menus{
   position: absolute;
-/* left: 1%;
-top: 25%; */
 right: 0%;
 top: 0%;
 min-height: 100%;
 min-width: 160px;
 background-color:#f3dcf5d4;
 font-size: 20px;
-
 }
+
+.hidden{
+display: none;
+}
+
+.block{
+display: block;
+}
+
+
 
 .menu-head{
   background-color: #7b717bfc;
@@ -606,9 +628,7 @@ padding: 4.5px;
   cursor: pointer;
 }
 
-.conj-menus{
-  display: none;
-}
+
 
 
 /***************************************************************/
@@ -861,7 +881,7 @@ font-weight: bold;
 /**************************************************************************/
 
 /**************************************************************************************************/
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1500px) {
 
 #content{
   margin:0.05em !important;
@@ -872,6 +892,7 @@ font-weight: bold;
 }
 
 }
+
 
 
 
