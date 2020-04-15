@@ -179,12 +179,22 @@ margin-top:6%;
 
 /*English translation*/
 .translation{
-  font-size:20px;
+  font-size:15px;
   color:#25272b;
   padding-top:5px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
+.translation__word{
+  background-color:#eeff7d70;
+   margin:0 4px 0 4px;
+    padding:3px 6px;
+    border:1px solid #e4e6da ;
+    border-radius:10px;
+}
+.translation__word--note{
+    background-color:#ff974770;
+}
 
 
 @media only screen and (max-width: 1024px) {
@@ -203,11 +213,21 @@ margin-top:6%;
   margin-right:4px
 }
 
+.translation--front{
+  font-size:25px;
+}
+
 /*french and english examples*/
 .examples{
   font-size:30px;
   font-family: myfont;
   font-weight: bold;
+}
+
+.example__higlighted-word{
+  color:red;
+  background-color:#eeff7d70;
+  border-radius:10px;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -281,6 +301,13 @@ margin-top:6%;
 
 .button1 .replaybutton span svg {
   font-size:200px;
+  background-color:white;
+  border: 1px dotted #CCC;
+  border-radius: 90px;
+}
+
+.button--tiny .replaybutton span svg {
+  font-size:20px;
   background-color:white;
   border: 1px dotted #CCC;
   border-radius: 90px;
@@ -801,17 +828,20 @@ padding-bottom:5px;
 .one{
 background-image: linear-gradient(45deg, #8bc787 30%, #b2de59 30%, #b2de59 50%, #8bc787 50%, #8bc787 80%, #b2de59 80%, #b2de59 100%);
 background-size: 7.07px 7.07px;
+margin-bottom: 3px;
 
 }
 
 .two{
 background-image: linear-gradient(45deg, #98d1f0 30%, #abdcf5 30%, #abdcf5 50%, #98d1f0 50%, #98d1f0 80%, #abdcf5 80%, #abdcf5 100%);
 background-size: 7.07px 7.07px;
+margin-bottom: 3px;
 }
 
 .three{
 background-image: linear-gradient(45deg, #ff8585 30%, #ff7f7f 30%, #ff7f7f 50%, #ff8585 50%, #ff8585 80%, #ff7f7f 80%, #ff7f7f 100%);
 background-size: 7.07px 7.07px;
+margin-bottom: 3px;
 }
 
 

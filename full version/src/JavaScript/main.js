@@ -34,6 +34,12 @@ String.prototype.removeAt=function(index) {
 String.prototype.replaceAt=function(index, replacement) {
   return this.substr(0, index) + replacement+ this.substr(index+1,);
 }
+String.prototype.replaceAll = function(strReplace, strWith) {
+    // See http://stackoverflow.com/a/3561711/556609
+    var esc = strReplace.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    var reg = new RegExp(esc, 'ig');
+    return this.replace(reg, strWith);
+};
 function strip(html){
  var doc = new DOMParser().parseFromString(html, 'text/html');
  return doc.body.textContent || "";
@@ -62,6 +68,38 @@ function getFields (){
 
 }
 
+function markFrenchWordInTheExample (example , englishEx){
+  englishEx = document.getElementById('englishExample').innerHTML
+  document.getElementById('frenchExamble').innerHTML=example.replaceAll("<span class='translation__word'>"+word+"</span>")
+
+    parts = translation.split(",")
+    parts.forEach((part, i) => {
+      part = part.trim()
+      if (!part.includes('(')){
+        if(englishEx.includes(part)){
+          document.getElementById('englishExample').innerHTML=englishEx.replaceAll(part,"<span class='example__higlighted-word'>"+part+"</span>")
+        }
+      }
+      if (type.includes('verb') && !type.includes('adverb')){
+        parts.forEach((part, i) => {
+          if(part.includes('to') || part.includes('for')){
+            part = part.replace('to','').trim()
+            part = part.replace('for','').trim()
+            if (!part.includes('()')){
+              if(englishEx.includes(part)){
+                document.getElementById('englishExample').innerHTML=englishEx.replaceAll(part,"<span class='example__higlighted-word'>"+part+"</span>")
+              }
+            }
+
+          }
+        });
+
+      }
+    });
+
+
+}
+
 function prepOptionsMenu(){
 
   if (fem == null)      { disableMenuOption("highlightGender") }
@@ -79,9 +117,6 @@ function prepOptionsMenu(){
       }
     }
 
-      for (var i = 0 ; i < bank_length ; i++){
-        markFrenchWordInTheExample(bank[i]['fr'])
-      }
   }
   return current_index
 }
@@ -91,11 +126,7 @@ function removeHTMLfromWordAndTranslationFields(){
   document.getElementById('word').innerHTML = word
 }
 
-function markFrenchWordInTheExample (example){
-  //TODO
-  document.getElementById('frenchExamble').innerHTML=example.replace(word,"<span style='color:red; background-color:#c2e653bd;'>"+word+"</span>")
 
-}
 
 /**
  *  Remove the extra new line tag that Anki adds at the end of the audio fields
@@ -855,13 +886,15 @@ function prepExtraOptionsMenu(){
 
 
   checkEX = document.getElementById('oEX');
-  if (window.checkedEX  === undefined && bank != null && bank_length != 1){
+  if (window.checkedEX  === undefined ){
     window.checkedEX = config['defaultExtraExamples'];
     checkEX.checked = config['defaultExtraExamples'];
   }
   else{
-    window.checkedEX = false;
-    checkEX.checked = false;
+    if( bank == null || bank_length == 1){
+      window.checkedEX = false;
+      checkEX.checked = false;
+    }
   }
   checkExtraExamplesBox(window.checkedEX);
   checkEX.checked = window.checkedEX
@@ -991,6 +1024,25 @@ function dispalymenu (status){
 
 
 
+function splitTranslation(){
+
+ parts = translation.split(",")
+  document.getElementsByClassName('translation')[0].innerHTML =""
+  parts.forEach((part, i) => {
+    part = part.trim()
+    if (part.includes('(')){
+      part = "<span class='translation__word translation__word--note'>"+part.replace('(','').replace(')','')+"<span/>"
+
+    }
+    else{
+      part = "<span class='translation__word'>"+part+"<span/>"
+
+    }
+    document.getElementsByClassName('translation')[0].innerHTML += part
+  });
+
+
+}
 
 
 /***************************************/
@@ -998,7 +1050,7 @@ function dispalymenu (status){
 
 getFields ()
 removeHTMLfromWordAndTranslationFields()
-markFrenchWordInTheExample (HTMLId('frenchExamble'))
+markFrenchWordInTheExample (HTMLId('frenchExamble'),HTMLId('englishExample'))
 current_index = prepOptionsMenu()
 prebBackGround()
 prepMaturityStatus()
@@ -1006,7 +1058,7 @@ prepHighlightingMenu()
 prepAttatchmentsMenu()
 prepExtraOptionsMenu()
 prepMainMenu()
-
+splitTranslation()
 
 
 /***************************************/
@@ -1030,9 +1082,8 @@ current_index+=next;
   else if (current_index == (-1)){
     current_index = bank_length-1
   }
-
+    markFrenchWordInTheExample(bank[current_index]['fr'] , bank[current_index]['en'])
     document.getElementById('frenchExamble').innerHTML = bank[current_index]['fr']
-    document.getElementById('englishExample').innerHTML = bank[current_index]['en']
     document.getElementById('exampleSound').childNodes[0].href='javascript:pycmd("ankiplay'+ bank[current_index]['audio']+'");';
     document.getElementById('exampleSound').childNodes[1].innerHTML = '[sound:'+ bank[current_index]['audio']
 
