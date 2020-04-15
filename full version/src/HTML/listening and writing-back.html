@@ -61,11 +61,11 @@
 <hr class="separator separator--line" />
 {{/french example}}
 
-<img id="previousIcon" class="examples__icon examples__icon--previous" onclick="previousExample()" style="" src="_french-delights/assets/icons/_arrow_left.png" />
+<img id="previousIcon" class="examples__icon examples__icon--previous" onclick="anotherExample(-1)" style="" src="_french-delights/assets/icons/_arrow_left.png" />
 <div style="display:inline-block" id="frenchExamble" class="examples ">
   {{french example}}
 </div>
-<img id="nxtIcon" class="examples__icon examples__icon--next" onclick="nextExample()"  src="_french-delights/assets/icons/_arrow_right.png" />
+<img id="nxtIcon" class="examples__icon examples__icon--next" onclick="anotherExample(1)"  src="_french-delights/assets/icons/_arrow_right.png" />
 <div id="noOfEx"> </div>
 {{#english example}}
 <hr class="separator separator--line" />
@@ -182,24 +182,24 @@
   <p class="menu__title"> Highlighting Options </p>
 
   <label class="highlightOption">
-  <input class="option-input radio" id="o1" type="radio" name="highlight" value="higlightRoots" >None</input>
+  <input class="option-input radio" id="highlightNone" type="radio" name='highilightingOptions' " >None</input>
   </label>
 
   <label class="highlightOption">
-  <input  class="option-input radio" id="o2" type="radio" name="highlight" value="higlightRoots" >Roots</input>
+  <input  class="option-input radio" id="highlightRoots" type="radio" name='highilightingOptions'" >Roots</input>
   </label>
 
   <label class="highlightOption">
-  <input class="option-input radio" id="o3" type="radio" name="highlight" value="higlightSpelling">Custom</input>
+  <input class="option-input radio" id="highlightCustom" type="radio" name='highilightingOptions' ">Custom</input>
   </label>
 
   <label class="highlightOption">
-  <input class="option-input radio"  id="o4" type="radio" name="highlight" value="highlightGender">Gender</input>
+  <input class="option-input radio"  id="highlightGender" type="radio" name='highilightingOptions' ">Gender</input>
   </label>
 
 
   <label class="highlightOption">
-  <input class="option-input radio" id="o5" type="radio" name="highlight" value="highlightGender">Plural</input>
+  <input class="option-input radio" id="highlightPlural" type="radio" name='highilightingOptions' >Plural</input>
   </label>
 
   </div>

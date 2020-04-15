@@ -1,26 +1,32 @@
-/************************************************************************/
- pairs = [ ['alt','alte'] , ['arian','aire'] ,  ['gen','gène'] , ['graph','graphe'] , ['ic','ique'] , ['isk','isque'] , ['ism','isme'],
+pairs = [ ['alt','alte'] , ['arian','aire'] ,  ['gen','gène'] , ['graph','graphe'] , ['ic','ique'] , ['isk','isque'] , ['ism','isme'],
 ['ist','iste'] , ['meter','mètre'] , ['mony','monie'] , ['oid' , 'oide'] , ['or' , 'eur'] , ['ot' , 'ote'] , ['sis' , 'se'] , ['ter' , 'tre'],
 ['ty','té'] , ['y','ie'] , ['acious' , 'ace'] , ['an','ain'] , ['ar' , 'aire'] , ['arious','aire'] , ['ary','aire'] , ['ferrous' , 'fère'] ,
- ['ical','ique'] , ['id' , 'ide'] , ['ine' , 'in'],
+['ical','ique'] , ['id' , 'ide'] , ['ine' , 'in'],
 ['ite','it'] , ['ive','if'] , ['nal','ne'] , ['ocious','oce'] , ['ous' , 'eux'] , ['und','ond'] , ['ure','ur'] ,
 ['ent','em'],['ect','ait'], ['act','aite'],['ate','ative'] ,['k','que'],['er','re'],['ous','e'],['ious','aire'],['ous','ique'],['ed','é']
 ]
 
- advPairs = [['y','ement'], ['ally','ellement'],['ly','ement'],['ly','ément'],['ly','ment']  ]
+advPairs = [['y','ement'], ['ally','ellement'],['ly','ement'],['ly','ément'],['ly','ment']  ]
 
- femPairs = [ ['ère','er'] , ['se','s'] , ['ve','f'] , ['euse','eux'] , ['che','c'] , ['euse','eur'] ,
-          ,['teuse','teur'] , ['eresse','eur'] , ['elle','eau'] , ['olle','ou'] , ['aîtresse','aître']]
+femPairs = [ ['ère','er'] , ['se','s'] , ['ve','f'] , ['euse','eux'] , ['che','c'] , ['euse','eur'] ,
+         ,['teuse','teur'] , ['eresse','eur'] , ['elle','eau'] , ['olle','ou'] , ['aîtresse','aître']]
 
- plPairs = [['aux','al'],['oux','ou'],['aux','ail'],['aux','au'],['eaux','eau'],['s','s'],['x','x'],['z','z']]
+plPairs = [['aux','al'],['oux','ou'],['aux','ail'],['aux','au'],['eaux','eau'],['s','s'],['x','x'],['z','z']]
 
 verb_pairs=[ ['ate','er'] , ['fy','fier'] ,  ['ise','iser'] , ['e','er']
 ]
-/***************************************************************************/
-// restore card size (for when changed to display verb conjs)
-// change to make responsi
-document.getElementsByClassName("card")[0].style.width='52%'
-// Helpers functions
+
+config = {
+  'defaultHighlightingSelection' : "highlightRoots",
+  'defaultExtraSelection' : 'noteOnly',
+  'interestInArabic' : true,
+  'defaultIPA':false,
+  'defaultPOS':false,
+  'defaultExtraExamples':true,
+  'defaultmaturityState':true
+}
+
+/******************************************/
 
 String.prototype.removeAt=function(index) {
   return this.substr(0, index) + this.substr(index+1,);
@@ -28,82 +34,68 @@ String.prototype.removeAt=function(index) {
 String.prototype.replaceAt=function(index, replacement) {
   return this.substr(0, index) + replacement+ this.substr(index+1,);
 }
-
 function strip(html){
-  var doc = new DOMParser().parseFromString(html, 'text/html');
-  return doc.body.textContent || "";
+ var doc = new DOMParser().parseFromString(html, 'text/html');
+ return doc.body.textContent || "";
 }
 
-/***************************************************************************/
+function HTMLId(id){  return document.getElementById(id).innerHTML.trim()}
+function HTMLClass(className){  return document.getElementsByClassName(className)[0].innerHTML.trim()}
+function textId(id){  return strip(document.getElementById(id).innerHTML.trim())}
+function textClass(className){  return strip(document.getElementsByClassName(className)[0].innerHTML.trim())}
 
-// the word the HTML styling tags
-var html_word =document.getElementById('word').innerHTML.trim();
-word = strip(html_word.trim());
-var type = document.getElementsByClassName('type')[0].innerHTML.trim();
-
-// the translation with the HTML styling tags
-var html_translation = document.getElementsByClassName('translationText')[0].innerHTML;
-translation = strip(html_translation.trim());
-
-
-/******************************************/
-
-if (type.includes('verb') && type != 'adverb'){
-  document.getElementById("o4").disabled = true;
-  document.getElementById("o4").parentElement.style.color = '#4f5154';
-  document.getElementById("o5").disabled = true;
-  document.getElementById("o5").parentElement.style.color = '#4f5154';
+function disableMenuOption (id){
+  document.getElementById(id).disabled = true;
+  document.getElementById(id).parentElement.style.color = '#4f5154';
 }
-/******************************************/
-//remove new line at the end of audio fields
-if(document.getElementById('wordSound')){
-  if(document.getElementById('wordSound').innerHTML.endsWith('<br>'))
-  document.getElementById('wordSound').innerHTML=document.getElementById('wordSound').innerHTML.slice(0,-4)
+
+function getFields (){
+  html_word =HTMLId('word')
+  word = textId('word')
+  html_translation =HTMLClass('translationText')
+  translation =textClass('translationText')
+  type =textClass('type')
+  try { fem =textClass('feminin')   ;  if ( fem == "" ) fem = null; }        catch (error) { fem = null; }
+  try { plural =textClass('plural') ;  if ( plural == "" ) plural = null; }  catch (error) { plural = null; }
+  try { ivl =HTMLId('ivl')          ;  if  (ivl == "" ) ivl = null; }        catch (error) { ivl = null; }
+  try {bank = textId('exBank') ;  bank = bank.split("'").join("\""); bank = JSON.parse(bank); bank_length = bank.length}  catch (error){bank = null;}
+
 }
-if(document.getElementById('exampleSound')){
-  if(document.getElementById('exampleSound').innerHTML.endsWith('<br>'))
-  document.getElementById('exampleSound').innerHTML=document.getElementById('exampleSound').innerHTML.slice(0,-4)
-}
-/******************************************/
-if(document.getElementsByClassName('feminin')[0]){
-  if(document.getElementsByClassName('feminin')[0].innerHTML.trim()){
-    fem = strip(document.getElementsByClassName('feminin')[0].innerHTML.trim())
-  }
+
+function prepOptionsMenu(){
+
+  if (fem == null)      { disableMenuOption("highlightGender") }
+  if (plural == null)   { disableMenuOption("highlightPlural") }
+  if (html_word == word){ disableMenuOption("highlightCustom") }
+  if (bank == null || bank_length == 1){ disableMenuOption("oEX") }
   else{
-    fem = null
-  }
-
-}
-else{
-  fem = null
-  document.getElementById("o4").disabled = true;
-  document.getElementById("o4").parentElement.style.color = '#4f5154';
-}
-
-if(document.getElementById('plural')){
-    plural = strip(document.getElementById('plural').innerHTML.trim())
-
-
-    if (plural == ""){
-      plural = null
-      document.getElementById("o5").disabled = true;
-      document.getElementById("o5").parentElement.style.color = '#4f5154';
+    indexOnScreen = 1
+    document.getElementById('noOfEx').innerHTML = "<br> example "+indexOnScreen+ " of "+ bank_length
+    current_example = textId('frenchExamble')
+    for (var i = 0 ; i < bank_length ; i++){
+      if (current_example == bank[i]['fr']){
+         current_index = i
+         break;
+      }
     }
-}
-else{
-  // for verbs a
-  plural = null
-  document.getElementById("o5").disabled = true;
-  document.getElementById("o5").parentElement.style.color = '#4f5154';
+
+      for (var i = 0 ; i < bank_length ; i++){
+        markFrenchWordInTheExample(bank[i]['fr'])
+      }
+  }
+  return current_index
 }
 
-// if no custom HTML mrking
-if (html_word == word){
-  document.getElementById("o3").disabled = true;
-  document.getElementById("o3").parentElement.style.color = '#4f5154';
+function removeHTMLfromWordAndTranslationFields(){
+  document.getElementsByClassName('translationText')[0].innerHTML = translation
+  document.getElementById('word').innerHTML = word
 }
 
-/***************************************************************************/
+function markFrenchWordInTheExample (example){
+  //TODO
+  document.getElementById('frenchExamble').innerHTML=example.replace(word,"<span style='color:red; background-color:#c2e653bd;'>"+word+"</span>")
+
+}
 
 /**
  *  Remove the extra new line tag that Anki adds at the end of the audio fields
@@ -119,18 +111,63 @@ function removeExtraNewLineTagInSoundFields(item)
   }
 }
 
-/***************************************************************************/
+function prebBackGround(){
+  /*Change the card's background color according to its type*/
 
-function prepareFields(){
-  document.getElementsByClassName('translationText')[0].innerHTML = translation
-  document.getElementById('word').innerHTML = word
-}
-function markFrenchWordInTheExample (){
-  document.getElementById('frenchExamble').innerHTML =document.getElementById('frenchExamble').innerHTML.replace(word,"<span style='color:red; background-color:#c2e653bd;'>"+word+"</span>")
+  function changeBackGroundColor (containerClassName , imgClassName){
+    document.getElementById("container").className = containerClassName;
+    document.getElementById("imgcontainer").className = imgClassName;
+  }
+
+
+  if (type.includes('feminine') && type.includes('masculine')){
+    changeBackGroundColor("both__background","both__image")
+  }
+  else if (type.trim().includes('feminine')) {
+    changeBackGroundColor("feminine__background","feminine__image")
+  }
+  else if (type.trim().includes('masculine')){
+    changeBackGroundColor("masculine__background","masculine__image")
+  }
+  else if (type.trim().includes('adjective')) {
+    changeBackGroundColor("adjective__background", "adjective__image")
+  }
+  else if (type.trim().includes('adverb')) {
+    changeBackGroundColor("adverb__background" ,"adverb__image" )
+  }
+  else if (type.trim().includes('verb')) {
+    changeBackGroundColor("verb__background","verb__image")
+  }
+  else if (type.trim().includes('verb')) {
+    changeBackGroundColor("verb__background","verb__image")
+  }
+  else {
+    changeBackGroundColor("other__background","other__image")
+  }
 
 }
-prepareFields()
-markFrenchWordInTheExample ()
+
+
+function prepMaturityStatus(){
+  stars = ['star1','star2','star3','nostar1','nostar2','nostar3']
+  if (ivl == null){
+    stars.forEach(star => document.getElementById(star).style.display='none');
+    //TO DO disable THE MATURITY  check box
+  }
+  else if (ivl==0 ){
+    [stars[1] , stars[2] , stars[3]].forEach(star => document.getElementById(star).style.display='none');
+  }
+  else if (ivl < 21){
+    [stars[2] , stars[3] , stars[4]].forEach(star => document.getElementById(star).style.display='none');
+  }
+  else {
+    [stars[3] , stars[4] , stars[5]].forEach(star => document.getElementById(star).style.display='none');
+  }
+}
+
+
+/********************************/
+
 
 
 /***************************************************************************************************************/
@@ -153,8 +190,6 @@ function isSibling (word , translation , testingPairs){
 );
 if (result != -1)return [result[1],result[0]]
 }
-
-/*********************************************/
 
 
 function isDoupleSibling (word , translation){
@@ -180,7 +215,7 @@ if (result != -1){
 }
 }
 
-/****************************************/
+
 function isChapeau (word,translation){
   var result = -1
   var couples =[['ê','es'],['û','us'],['î','is'],['ô','os'],['â','as']]
@@ -220,7 +255,7 @@ function hasAFlippedLetter (word , translation){
     if (c == 0)  return loc
   }
 }
-/*********************************************/
+
 function hasALongertTranslation(word,translation){
   if((translation.length  ==  word.length+1) )
   {
@@ -230,7 +265,7 @@ function hasALongertTranslation(word,translation){
     }
   }
 }
-/*********************************************/
+
 function hasAShorterTranslation(word,translation){
   if((word.length  ==  translation.length+1) )
   {
@@ -266,7 +301,7 @@ function isSiblingWithExtraLetter(word,translation,testingPairs){
   }
 }
 
-/*********************************************/
+
 
 function isSiblingWithFlippedLetter (word ,translation,testingPairs){
   var result = -1
@@ -291,7 +326,7 @@ if (result != -1){
   return [result[1] , result[0] , result2]
 }
 }
-/*********************************************/
+
 
 function hasDoubleSiblingExtraLetter (word,translation){
 
@@ -313,7 +348,7 @@ function hasDoubleSiblingExtraLetter (word,translation){
 
 }
 
-/*********************************************/
+
 function hasDoubleSiblingflippedLetter (word ,translation){
 //TODO
 }
@@ -349,9 +384,6 @@ function highlightSpelling (nOfChanges , theWord , theTranslation ,  part1 , par
   var styleEnd = '</u></span>'
   if(part1)   var p1Index = -part1.length
   if(part2) var p2Index = -part2.length
-
-
-  // console.log( part1 , part2 ,p3,p4,index,changePlace)
 
   if (nOfChanges == 1 && index == null){
     // if thye're siblings or chapeau
@@ -577,7 +609,6 @@ function markGender (){
     document.getElementsByClassName('feminin')[0].innerHTML = fem.slice(0,-1)+"<span style='color:#0099cc'><u>e</u></span>"
   }
 
-
 }
 
 function markCustome(){
@@ -630,7 +661,6 @@ function unMark(){
   }
 
   if(fem){
-    console.log(fem)
     document.getElementsByClassName('feminin')[0].innerHTML = strip(fem)
   }
 
@@ -656,13 +686,12 @@ function displaypPlural(){
     word2 = word
   }
 
-  if (type.includes('noun')){
+  if (type.includes('noun') && !(type.includes('fem') && type.includes('mas') )  ){
 
     var pluralText = word2 +"&nbsp <img class='plural-arrow-icon' src='arrow1.png'/>&nbsp"+ pluralText;
     document.getElementsByClassName("word")[0].innerHTML = pluralText
   }
   else{
-        console.log('here')
          document.getElementById('plural').innerHTML = pluralText
           document.getElementById('plural').style.display=('block')
          document.getElementsByClassName("masculine")[0].innerHTML = word2
@@ -671,46 +700,45 @@ function displaypPlural(){
 }
 /***************************************************************************************/
 
-
-
-
-
-  window.selectedId = window.selectedId|| "o2";
-  if(window.selectedId){
-    if(document.getElementById(window.selectedId)){
-      if(document.getElementById(window.selectedId).disabled == false)
-        var radio = document.getElementById(window.selectedId);
+function prepHighlightingMenu(){
+  window.selectedHighlightingId = window.selectedHighlightingId||config['defaultHighlightingSelection'] ;
+  if(window.selectedHighlightingId){
+    if(document.getElementById(window.selectedHighlightingId)){
+      if(document.getElementById(window.selectedHighlightingId).disabled == false)
+        var radio = document.getElementById(window.selectedHighlightingId);
       else{
-        window.selectedId = 'o2';
-        var radio = document.getElementById(window.selectedId);
+        window.selectedHighlightingId = config['defaultHighlightingSelection'];
+        var radio = document.getElementById(window.selectedHighlightingId);
         radio.checked = 'checked';
-        check3(window.selectedId);
+        highlightWord(window.selectedHighlightingId);
       }
     }
-    else window.selectedId = 'o2'
-    var radio = document.getElementById(window.selectedId);
+    else window.selectedHighlightingId = config['defaultHighlightingSelection']
+    var radio = document.getElementById(window.selectedHighlightingId);
     radio.checked = 'checked';
-    check3(window.selectedId);
+    highlightWord(window.selectedHighlightingId);
   }
 
 
-  var radios = document.getElementsByName('highlight');
+  var radios = document.getElementsByName('highilightingOptions');
   for(var i = 0, max = radios.length; i < max; i++) {
 
       radios[i].addEventListener('change', function() {
-           window.selectedId = this.id
-           check3(window.selectedId);
+           window.selectedHighlightingId = this.id
+           highlightWord(window.selectedHighlightingId);
 
     }, false);
   }
 
 
+}
 
-  function check3(id) {
-    if (id == 'o1'){
+
+function highlightWord(id) {
+    if (id == 'highlightNone'){
       unMark()
     }
-    else if (id == 'o2') {
+    else if (id == 'highlightRoots') {
       unMark()
       if(type.includes('verb') && type!= 'adverb'){
         markVerbEnding();
@@ -718,69 +746,63 @@ function displaypPlural(){
       else{
           mark();
       }
-      mark();
     }
-    else if (id == 'o3') {
+    else if (id == 'highlightCustom') {
       unMark()
       markCustome();
     }
-    else if(id == 'o4'){
+    else if(id == 'highlightGender'){
       unMark()
       markGender()
     }
-    else if(id == 'o5'){
+    else if(id == 'highlightPlural'){
       unMark()
       displaypPlural()
     }
   }
+
+
+
 /**************************/
 
 
+function prepAttatchmentsMenu(){
 
-  var options = document.getElementsByName('options');
+     extraOptions = document.getElementsByName('extraOptions');
 
-  if(document.getElementsByName('extraOptions')){
 
-  var extraOptions = document.getElementsByName('extraOptions');
-  }
-
-  if(document.getElementById("extra")){
-    extra = document.getElementById("extra").innerHTML
-    if (extra.includes("rabic") ){
-      window.optionId = "root";
+    if(document.getElementById("extra")){
+      extra = document.getElementById("extra").innerHTML
+      if(config['interestInArabic']==true  && extra.includes("rabic")){
+        window.optionId = 'root';
+      }
+     else{
+      window.optionId = config['defaultExtraSelection'];
     }
-    else{
-      window.optionId = "noteOnly";
+  }
+
+
+
+    window.optionId = window.optionId || config['defaultExtraSelection'];
+    if(window.optionId != 0){
+       option = document.getElementById(window.optionId);
+      option.style.backgroundColor='#60f0ad'
+      dispalyOption(window.optionId);
+
     }
 
-  }
-  else{
-    window.optionId = "noteOnly";
-  }
+    for(var i = 0, max = options.length; i < max; i++) {
+
+        options[i].onclick =function() {
+             window.optionId = this.id
+             dispalyOption(window.optionId);
+
+      };
+    }
+}
 
 
-
-
-
-  window.optionId = window.optionId || 'noteOnly';
-  if(window.optionId != 0){
-    var option = document.getElementById(window.optionId);
-    option.style.backgroundColor='#60f0ad'
-    dispalyOption(window.optionId);
-
-  }
-
-  for(var i = 0, max = options.length; i < max; i++) {
-
-      options[i].onclick =function() {
-        // console.log('clicked')
-           window.optionId = this.id
-           dispalyOption(window.optionId);
-
-    };
-  }
-
-  function dispalyOption(id) {
+function dispalyOption(id) {
     for(var i = 0, max = options.length; i < max; i++) {
         options[i].style.backgroundColor='#f3dcf500'
     }
@@ -801,73 +823,82 @@ function displaypPlural(){
 
   }
 
-/*****************************************/
 
-var checkIPA = document.getElementById('oIPA');
-var checkPOS = document.getElementById('oPOS');
-var checkEX = document.getElementById('oEX');
-var checkMut = document.getElementById('oMut');
+function prepExtraOptionsMenu(){
+  checkIPA = document.getElementById('oIPA');
+  if (window.checkedIPA  === undefined){
+    window.checkedIPA = config['defaultIPA'];
+    checkIPA.checked = config['defaultIPA'];
+  }
+  checkIPABox(window.checkedIPA);
+  checkIPA.checked = window.checkedIPA
+  checkIPA.addEventListener('change', function() {
+      window.checkedIPA = checkIPA.checked;
+      checkIPABox(checkIPA.checked);
+  });
 
-if (window.checkedIPA  === undefined){
-  window.checkedIPA = false;
-  checkIPA.checked = false;
+
+
+  checkPOS = document.getElementById('oPOS');
+  if (window.checkedPOS  === undefined){
+    window.checkedPOS = config['defaultPOS'];
+    checkPOS.checked = config['defaultPOS'];
+  }
+  checkPOSBox(window.checkedPOS);
+  checkPOS.checked = window.checkedPOS
+  checkPOS.addEventListener('change', function() {
+      window.checkedPOS = checkPOS.checked;
+      checkPOSBox(checkPOS.checked);
+  });
+
+
+
+
+  checkEX = document.getElementById('oEX');
+  if (window.checkedEX  === undefined && bank != null && bank_length != 1){
+    window.checkedEX = config['defaultExtraExamples'];
+    checkEX.checked = config['defaultExtraExamples'];
+  }
+  else{
+    window.checkedEX = false;
+    checkEX.checked = false;
+  }
+  checkExtraExamplesBox(window.checkedEX);
+  checkEX.checked = window.checkedEX
+  checkEX.addEventListener('change', function() {
+      window.checkedEX = checkEX.checked;
+      checkExtraExamplesBox(checkEX.checked);
+  });
+
+
+
+
+  checkMut = document.getElementById('oMut');
+  if (window.checkedMut  === undefined){
+    window.checkedMut = config['defaultmaturityState'];
+    checkMut.checked =config['defaultmaturityState'];
+  }
+  checkMaturity(window.checkedMut);
+  checkMut.checked = window.checkedMut
+
+  checkMut.addEventListener('change', function() {
+      window.checkedMut = checkMut.checked;
+      checkMaturity(checkMut.checked);
+  });
+
 }
 
-if (window.checkedPOS  === undefined){
-  window.checkedPOS = false;
-  checkPOS.checked = false;
+
+function checkIPABox(checker) {
+    if(checker == true) {
+        document.getElementsByClassName("ipa")[0].style.display = "block";
+    } else if (checker == false) {
+        document.getElementsByClassName("ipa")[0].style.display = "none";
+    }
 }
 
 
-if (window.checkedEX  === undefined){
-  window.checkedEX = true;
-  checkEX.checked = true;
-}
-
-if (window.checkedMut  === undefined){
-  window.checkedMut = true;
-  checkMut.checked = true;
-}
-
-
-
-check(window.checkedIPA);
-check2(window.checkedPOS);
-checkx(window.checkedEX);
-checkM(window.checkedMut);
-
-
-checkIPA.checked = window.checkedIPA
-checkPOS.checked = window.checkedPOS
-checkEX.checked = window.checkedEX
-checkMut.checked = window.checkedMut
-
-
-checkIPA.addEventListener('change', function() {
-    window.checkedIPA = checkIPA.checked;
-    check(checkIPA.checked);
-});
-
-checkPOS.addEventListener('change', function() {
-    window.checkedPOS = checkPOS.checked;
-    check2(checkPOS.checked);
-});
-
-
-checkEX.addEventListener('change', function() {
-    window.checkedEX = checkEX.checked;
-    checkx(checkEX.checked);
-});
-
-
-checkMut.addEventListener('change', function() {
-    window.checkedMut = checkMut.checked;
-    checkM(checkMut.checked);
-});
-
-
-
-function checkM(checker) {
+function checkMaturity(checker) {
     if(checker == true) {
         document.getElementsByClassName("card-maturity")[0].style.display = "block";
     } else if (checker == false) {
@@ -877,15 +908,8 @@ function checkM(checker) {
 }
 
 
-function check(checker) {
-    if(checker == true) {
-        document.getElementsByClassName("ipa")[0].style.display = "block";
-    } else if (checker == false) {
-        document.getElementsByClassName("ipa")[0].style.display = "none";
-    }
-}
 
-function check2(checker) {
+function checkPOSBox(checker) {
 
     if(checker == true) {
          document.getElementsByClassName("type-corner")[0].style.display = "block";
@@ -895,7 +919,7 @@ function check2(checker) {
 }
 
 
-function checkx(checker) {
+function checkExtraExamplesBox(checker) {
 
     if(checker == true) {
         // console.log('true')
@@ -920,201 +944,29 @@ function checkx(checker) {
 
 }
 
-
-
-
-
-
-  /****************************************************************************************/
-  /*Change the card's background color according to its type*/
-  if (type.includes('feminine') && type.includes('masculine')){
-    document.getElementById("container").className = "both__background";
-    document.getElementById("imgcontainer").className = "both__image";
+function prepMainMenu(){
+  if(window.menuStatus == undefined){
+    window.menuStatus =  'close';
+    document.getElementsByClassName("menu__head__icon--open")[0].style.display="none"
   }
-  else if (type.trim().includes('feminine')) {
-    document.getElementById("container").className = "feminine__background";
-    document.getElementById("imgcontainer").className = "feminine__image";
-  }
-  else if (type.trim().includes('masculine')){
-    document.getElementById("container").className = "masculine__background";
-    document.getElementById("imgcontainer").className = "masculine__image";
-  }
-  else if (type.trim().includes('adjective')) {
-    document.getElementById("container").className = "adjective__background";
-    document.getElementById("imgcontainer").className = "adjective__image";
-
-  }
-  else if (type.trim().includes('adverb')) {
-    document.getElementById("container").className = "adverb__background";
-    document.getElementById("imgcontainer").className = "adverb__image";
-  }
-  else if (type.trim().includes('verb')) {
-    document.getElementById("container").className = "verb__background";
-    document.getElementById("imgcontainer").className = "verb__image";
-  }
-  else if (type.trim().includes('verb')) {
-    document.getElementById("container").className = "verb__background";
-    document.getElementById("imgcontainer").className = "verb__image";
-  }
-  else {
-    document.getElementById("container").className = "other__background";
-    document.getElementById("imgcontainer").className = "other__image";
-  }
-  /***************************************************************************/
-
-
-  ivl = document.getElementById('ivl').innerHTML ;
-
-  if (ivl==0 ){
-    document.getElementById('star2').style.display='none'
-    document.getElementById('star3').style.display='none'
-    document.getElementById('nostar1').style.display='none'
-    // document.getElementById('star-msg').innerHTML='new'
-  }
-  else if (ivl < 21){
-
-    document.getElementById('star3').style.display='none'
-    document.getElementById('nostar1').style.display='none'
-    document.getElementById('nostar2').style.display='none'
-    // document.getElementById('star-msg').innerHTML='young'
-  }
-  else {
-    document.getElementById('nostar1').style.display='none'
-    document.getElementById('nostar2').style.display='none'
-    document.getElementById('nostar3').style.display='none'
-    // document.getElementById('star-msg').innerHTML='mature'
-  }
-
-/******************************************************************/
-
-/***extra examples***/
-type = document.getElementsByClassName('type')[0].innerHTML
-
-current_index = -1
-original_index = -1
-bankJSON=[]
-var checkEX = document.getElementById('oEX');
-
-indexOnScreen = 1
-function brepBank(bank){
-  bank = bank.split("'").join("\"")
-
-  bankJSON = JSON.parse(bank);
-  document.getElementById('noOfEx').innerHTML = "<br> example "+indexOnScreen+ " of "+ bankJSON.length
-  return (bankJSON)
-}
-if(document.getElementById('exBank')){
-      if(document.getElementById('exBank').innerHTML.length>2){
-
-                bank = strip(document.getElementById('exBank').innerHTML.trim())
-                bankJSON = brepBank(bank)
-                if(bankJSON.length > 1){
-                current_index = -1
-                original_index = -1
-                current_example =strip(document.getElementById('frenchExamble').innerHTML.trim())
-                for (var i = 0 ; i < bankJSON.length ; i++){
-                  if (current_example == bankJSON[i]['fr']){
-                    current_index = i
-                    original_index = i
-                  }
-                }
-              }
-              else{
-                document.getElementById('previousIcon').style.display='none'
-                document.getElementById('nxtIcon').style.display='none'
-                document.getElementById('noOfEx').style.display='none'
-                // checkEX.disabled = true
-              }
-
-
-              for (var i = 0 ; i < bankJSON.length ; i++){
-                bankJSON[i]['fr'] = bankJSON[i]['fr'].replace(word,"<span style='color:red; background-color:#c2e653bd;'>"+word+"</span>")
-
-
-      }
-    }
-      else{
-        checkEX.disabled = true;
-        document.getElementById('previousIcon').style.display='none'
-        document.getElementById('nxtIcon').style.display='none'
-        document.getElementById('noOfEx').style.display='none'
-
-      }
-
-}
-function nextExample(){
-  indexOnScreen+=1;
-  if(indexOnScreen > bankJSON.length){
-    indexOnScreen = 1
-  }
-  document.getElementById('noOfEx').innerHTML = "<br> example "+indexOnScreen+ " of "+ bankJSON.length
-  if (current_index == bankJSON.length-1 ){
-    current_index = 0
-    // console.log(current_index);
+  else if (window.menuStatus == 'open'){
+     dispalymenu ('close')
   }
   else{
-    current_index += 1
-    // console.log(current_index);
+    dispalymenu ('open')
   }
-  if (current_index == original_index){
-    document.getElementById('frenchExamble').innerHTML = bankJSON[current_index]['fr']
-    document.getElementById('englishExample').innerHTML = bankJSON[current_index]['en']
-  }
-  else{
-    document.getElementById('frenchExamble').innerHTML = bankJSON[current_index]['fr'] + "<br><br><iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' autoplay='false' preload='none' type='audio/mp3'> <source src='../"+bankJSON[current_index]['audio']+"'></audio>"
-    document.getElementById('englishExample').innerHTML = bankJSON[current_index]['en']
-  }
+
+
+   document.getElementsByClassName("menu__head__icon")[0].addEventListener("click",function( ){
+    dispalymenu(window.menuStatus);
+  });
+
+  document.getElementsByClassName("menu__head__icon--open")[0].addEventListener("click",function( ){
+   dispalymenu(window.menuStatus);
+  });
 
 }
 
-function previousExample(){
-  indexOnScreen-=1;
-  if(indexOnScreen <= 0){
-    indexOnScreen = bankJSON.length
-  }
-  document.getElementById('noOfEx').innerHTML = "<br> example "+indexOnScreen+ " of "+ bankJSON.length
-  if (current_index == 0 ){
-    current_index = bankJSON.length-1
-    console.log(current_index);
-  }
-  else{
-    current_index -= 1
-    console.log(current_index);
-  }
-  if (current_index == original_index){
-    document.getElementById('frenchExamble').innerHTML = bankJSON[current_index]['fr']
-    document.getElementById('englishExample').innerHTML = bankJSON[current_index]['en']
-  }
-  else{
-    document.getElementById('frenchExamble').innerHTML = bankJSON[current_index]['fr'] + "<br><br><iframe src='silence.mp3' type='audio/mp3' allow='autoplay' id='audio' style='display:none'></iframe><audio controls='' autoplay='false' preload='none' type='audio/mp3'> <source src='../"+bankJSON[current_index]['audio']+"'></audio>"
-    document.getElementById('englishExample').innerHTML = bankJSON[current_index]['en']
-  }
-}
-
-/****************************************************/
-
-/**open/close menu*/
-
-
-if(window.menuStatus == undefined){
-  window.menuStatus =  'close';
-  document.getElementsByClassName("menu__head__icon--open")[0].style.display="none"
-}
-else if (window.menuStatus == 'open'){
-   dispalymenu ('close')
-}
-else{
-  dispalymenu ('open')
-}
-
-
- document.getElementsByClassName("menu__head__icon")[0].addEventListener("click",function( ){
-  dispalymenu(window.menuStatus);
-});
-
-document.getElementsByClassName("menu__head__icon--open")[0].addEventListener("click",function( ){
- dispalymenu(window.menuStatus);
-});
 
 
 function dispalymenu (status){
@@ -1136,4 +988,52 @@ function dispalymenu (status){
 
 }
 
+
+
+
+
+
 /***************************************/
+
+
+getFields ()
+removeHTMLfromWordAndTranslationFields()
+markFrenchWordInTheExample (HTMLId('frenchExamble'))
+current_index = prepOptionsMenu()
+prebBackGround()
+prepMaturityStatus()
+prepHighlightingMenu()
+prepAttatchmentsMenu()
+prepExtraOptionsMenu()
+prepMainMenu()
+
+
+
+/***************************************/
+
+function anotherExample(next)
+{
+
+current_index+=next;
+  indexOnScreen+=next;
+  if(indexOnScreen > bank_length){
+    indexOnScreen = 1
+  }
+  else if(indexOnScreen <= 0){
+       indexOnScreen = bank_length
+ }
+  document.getElementById('noOfEx').innerHTML = "<br> example "+indexOnScreen+ " of "+ bank_length
+  window.window += next
+  if (current_index == bank_length ){
+    current_index = 0
+  }
+  else if (current_index == (-1)){
+    current_index = bank_length-1
+  }
+
+    document.getElementById('frenchExamble').innerHTML = bank[current_index]['fr']
+    document.getElementById('englishExample').innerHTML = bank[current_index]['en']
+    document.getElementById('exampleSound').childNodes[0].href='javascript:pycmd("ankiplay'+ bank[current_index]['audio']+'");';
+    document.getElementById('exampleSound').childNodes[1].innerHTML = '[sound:'+ bank[current_index]['audio']
+
+}
