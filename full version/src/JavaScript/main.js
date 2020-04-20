@@ -1085,6 +1085,6 @@ current_index+=next;
     markFrenchWordInTheExample(bank[current_index]['fr'] , bank[current_index]['en'])
     document.getElementById('frenchExamble').innerHTML = bank[current_index]['fr']
     document.getElementById('exampleSound').childNodes[0].href='javascript:pycmd("ankiplay'+ bank[current_index]['audio']+'");';
-    document.getElementById('exampleSound').childNodes[1].innerHTML = '[sound:'+ bank[current_index]['audio']
+    // document.getElementById('exampleSound').childNodes[1].innerHTML = '[sound:'+ bank[current_index]['audio']+"]"
 
 }
