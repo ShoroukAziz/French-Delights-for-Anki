@@ -692,7 +692,8 @@ function markVerbEnding(){
 function unMark(){
   document.getElementById("ribbon").className="";
   document.getElementsByClassName('translationText')[0].innerHTML = translation
-  if(  document.getElementsByClassName('word')[0] && type.includes('noun') && (!type.includes('fem') && !type.includes('mas') )  ){
+
+  if(  document.getElementsByClassName('word')[0] &&   (type.includes('noun') && !(type.includes('fem') && type.includes('mas') )  ) ){
     document.getElementsByClassName('word')[0].innerHTML = word
   }
   if(document.getElementById('word'))
