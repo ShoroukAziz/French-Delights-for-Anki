@@ -13,6 +13,10 @@ hr{
   background-color: #ffffff00;
 }
 
+#phrase iframe{
+  height: 430px !important
+}
+
 .separator--line {
   border: 0;
   border-bottom:1px solid #858585;
@@ -100,6 +104,24 @@ margin-top:6%;
   }
 }
 
+.attention{
+  color: #990513;
+   background-color: white;
+  border:1px solid white;
+  border-radius: 25px;
+  font-size: 20px;
+  margin: 45px 0px;
+  padding: 1px;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.attention__icon{
+  width: 25px;
+  margin-bottom: -5px;
+  margin-right: 5px;
+}
 /* Back card's background */
 #container {
 
@@ -170,6 +192,7 @@ margin-top:6%;
 
 .typedWord {
   font-size: 60px;
+  margin: 1px;
 }
 @media only screen and (max-width: 1024px) {
     .typedWord {
@@ -186,6 +209,7 @@ margin-top:6%;
 }
 
 .translation__word{
+
   background-color:#eeff7d70;
    margin:0 4px 0 4px;
     padding:3px 6px;
@@ -805,6 +829,14 @@ background: rgb(105,88,255);
 background: linear-gradient(90deg, rgba(105,88,255,1) 0%, rgba(255,117,199,1) 70%, rgba(255,255,255,1) 100%);
 
 }
+.phrase__background{
+
+}
+.phrase__image{
+  background: rgb(63,94,251);
+background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
 
 .other__background{
 
@@ -812,6 +844,8 @@ background: linear-gradient(90deg, rgba(105,88,255,1) 0%, rgba(255,117,199,1) 70
 .other__image{
   background-color: grey;
 }
+
+
 
 .verb__background {
 background: rgb(206,255,186);

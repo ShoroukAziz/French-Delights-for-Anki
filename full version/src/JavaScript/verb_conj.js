@@ -61,7 +61,8 @@ function audioButton(audio_file){
 
 
 
-if (type.includes('verb') && type != 'adverb'   ){
+if (type.includes('verb') && type != 'adverb'){
+  console.log(type)
 
   if(document.getElementById('conjugationsDict')){
     if( conjugations =="" || conjugations =="null"){

@@ -17,7 +17,7 @@ verb_pairs=[ ['ate','er'] , ['fy','fier'] ,  ['ise','iser'] , ['e','er']
 ]
 
 config = {
-  'defaultHighlightingSelection' : "highlightRoots",
+  'defaultHighlightingSelection' : "highlightNone",
   'defaultExtraSelection' : 'noteOnly',
   'interestInArabic' : true,
   'defaultIPA':false,
@@ -69,23 +69,24 @@ function getFields (){
 }
 
 function markFrenchWordInTheExample (example , englishEx){
-  englishEx = document.getElementById('englishExample').innerHTML
-  document.getElementById('frenchExamble').innerHTML=example.replaceAll("<span class='translation__word'>"+word+"</span>")
+  document.getElementById('frenchExamble').innerHTML=example.replaceAll(word,"<span class='example__higlighted-word'>"+word+"</span>")
+  document.getElementById('englishExample').innerHTML=englishEx
 
     parts = translation.split(",")
     parts.forEach((part, i) => {
       part = part.trim()
       if (!part.includes('(')){
-        if(englishEx.includes(part)){
+        if(englishEx.toLowerCase().includes(part.toLowerCase())){
           document.getElementById('englishExample').innerHTML=englishEx.replaceAll(part,"<span class='example__higlighted-word'>"+part+"</span>")
         }
       }
+    });
       if (type.includes('verb') && !type.includes('adverb')){
         parts.forEach((part, i) => {
           if(part.includes('to') || part.includes('for')){
             part = part.replace('to','').trim()
             part = part.replace('for','').trim()
-            if (!part.includes('()')){
+            if (!part.includes('(')){
               if(englishEx.includes(part)){
                 document.getElementById('englishExample').innerHTML=englishEx.replaceAll(part,"<span class='example__higlighted-word'>"+part+"</span>")
               }
@@ -95,29 +96,31 @@ function markFrenchWordInTheExample (example , englishEx){
         });
 
       }
-    });
+
 
 
 }
 
 function prepOptionsMenu(){
-
+current_index = -1
   if (fem == null)      { disableMenuOption("highlightGender") }
   if (plural == null)   { disableMenuOption("highlightPlural") }
   if (html_word == word){ disableMenuOption("highlightCustom") }
-  if (bank == null || bank_length == 1){ disableMenuOption("oEX") }
+  if(mark()==false)     { disableMenuOption("highlightRoots") }
+  if (bank == null || bank_length == 1){/* disableMenuOption("oEX") ;  document.getElementById("previousIcon").style.display = "none";document.getElementById("nxtIcon").style.display = "none"; */}
   else{
     indexOnScreen = 1
     document.getElementById('noOfEx').innerHTML = "<br> example "+indexOnScreen+ " of "+ bank_length
     current_example = textId('frenchExamble')
     for (var i = 0 ; i < bank_length ; i++){
-      if (current_example == bank[i]['fr']){
+      if (current_example.toLowerCase() == bank[i]['fr'].toLowerCase()){
          current_index = i
          break;
       }
     }
 
   }
+
   return current_index
 }
 
@@ -172,7 +175,9 @@ function prebBackGround(){
   else if (type.trim().includes('verb')) {
     changeBackGroundColor("verb__background","verb__image")
   }
-  else {
+  else if (type.trim().includes('phrase')) {
+    changeBackGroundColor("phrase__background","phrase__image")
+  }else {
     changeBackGroundColor("other__background","other__image")
   }
 
@@ -545,6 +550,10 @@ function highlightSpelling (nOfChanges , theWord , theTranslation ,  part1 , par
   }
 
   document.getElementsByClassName('translationText')[0].innerHTML=highlightedTranslation
+
+  if(highlightedTranslation==translation && highletedWord == word){
+    return false
+  }
 }
 
 
@@ -586,35 +595,36 @@ else{
 
 
   if (siblings)
-    highlightSpelling(1,word ,firstTranslation,siblings[0],siblings[1],'#0099cc',null,null,null,otherTranslations)
+    return highlightSpelling(1,word ,firstTranslation,siblings[0],siblings[1],'#0099cc',null,null,null,otherTranslations)
   else if(adverbSibling)
-    highlightSpelling(1,word ,firstTranslation,adverbSibling[0],adverbSibling[1],'#0099cc',null,null,null,otherTranslations)
+    return highlightSpelling(1,word ,firstTranslation,adverbSibling[0],adverbSibling[1],'#0099cc',null,null,null,otherTranslations)
   else if(doupleSibling)
-    highlightSpelling(2,word ,firstTranslation,doupleSibling[0],doupleSibling[1],'#0099cc','#07607d',null,null,otherTranslations,doupleSibling[2],doupleSibling[3])
+    return highlightSpelling(2,word ,firstTranslation,doupleSibling[0],doupleSibling[1],'#0099cc','#07607d',null,null,otherTranslations,doupleSibling[2],doupleSibling[3])
   else if (chapeau)
-    highlightSpelling(1,word ,firstTranslation ,  chapeau[0],chapeau[1],'deeppink',null,null,null,otherTranslations)
-    else if (flipped >=0)
-      highlightSpelling(1,word ,firstTranslation ,null,null,'deeppink',null,flipped,0,otherTranslations)
+    return highlightSpelling(1,word ,firstTranslation ,  chapeau[0],chapeau[1],'deeppink',null,null,null,otherTranslations)
+ else if (flipped >=0)
+      return highlightSpelling(1,word ,firstTranslation ,null,null,'deeppink',null,flipped,0,otherTranslations)
   else if(longertTranslation >=0)
-      highlightSpelling(1,word ,firstTranslation ,null,null,'deeppink',null,longertTranslation,2,otherTranslations)
+      return highlightSpelling(1,word ,firstTranslation ,null,null,'deeppink',null,longertTranslation,2,otherTranslations)
   else if(shorterTranslation >=0)
-      highlightSpelling(1,word ,firstTranslation ,null,null,'deeppink',null,shorterTranslation,1,otherTranslations)
+      return highlightSpelling(1,word ,firstTranslation ,null,null,'deeppink',null,shorterTranslation,1,otherTranslations)
   else if(siblingWithExtraLetter)
-    highlightSpelling(2,word ,firstTranslation ,siblingWithExtraLetter[1],siblingWithExtraLetter[2],'#0099cc','deeppink',siblingWithExtraLetter[0],siblingWithExtraLetter[3],otherTranslations)
+    return highlightSpelling(2,word ,firstTranslation ,siblingWithExtraLetter[1],siblingWithExtraLetter[2],'#0099cc','deeppink',siblingWithExtraLetter[0],siblingWithExtraLetter[3],otherTranslations)
   else if(advSiblingWithExtraLetter)
-    highlightSpelling(2,word ,firstTranslation ,advSiblingWithExtraLetter[1],advSiblingWithExtraLetter[2],'#0099cc','deeppink',advSiblingWithExtraLetter[0],advSiblingWithExtraLetter[3],otherTranslations)
+    return highlightSpelling(2,word ,firstTranslation ,advSiblingWithExtraLetter[1],advSiblingWithExtraLetter[2],'#0099cc','deeppink',advSiblingWithExtraLetter[0],advSiblingWithExtraLetter[3],otherTranslations)
   else if(siblingWithFlippedLetter)
-    highlightSpelling(2,word ,firstTranslation ,siblingWithFlippedLetter[0],siblingWithFlippedLetter[1],'#0099cc','deeppink',siblingWithFlippedLetter[2],0,otherTranslations)
+    return highlightSpelling(2,word ,firstTranslation ,siblingWithFlippedLetter[0],siblingWithFlippedLetter[1],'#0099cc','deeppink',siblingWithFlippedLetter[2],0,otherTranslations)
   else if(advsiblingWithFlippedLetter)
-    highlightSpelling(2,word ,firstTranslation ,advsiblingWithFlippedLetter[0],advsiblingWithFlippedLetter[1],'#0099cc','deeppink',advsiblingWithFlippedLetter[2],0,otherTranslations)
+    return highlightSpelling(2,word ,firstTranslation ,advsiblingWithFlippedLetter[0],advsiblingWithFlippedLetter[1],'#0099cc','deeppink',advsiblingWithFlippedLetter[2],0,otherTranslations)
   else if (doubleSiblingExtraLetter)
-    highlightSpelling(2,word ,firstTranslation ,doubleSiblingExtraLetter[1],doubleSiblingExtraLetter[2],'#0099cc','deeppink',doubleSiblingExtraLetter[0],doubleSiblingExtraLetter[5],otherTranslations,doubleSiblingExtraLetter[3],doubleSiblingExtraLetter[4])
+    return highlightSpelling(2,word ,firstTranslation ,doubleSiblingExtraLetter[1],doubleSiblingExtraLetter[2],'#0099cc','deeppink',doubleSiblingExtraLetter[0],doubleSiblingExtraLetter[5],otherTranslations,doubleSiblingExtraLetter[3],doubleSiblingExtraLetter[4])
+  else {
+    return false
+  }
   // else if (doubleSiblingflippedLetter)
   //   highlightSpelling(2,word ,firstTranslation ,doubleSiblingflippedLetter[1],doubleSiblingflippedLetter[2],'#0099cc','deeppink',doubleSiblingflippedLetter[0],0,otherTranslations,doubleSiblingflippedLetter[3],doubleSiblingflippedLetter[4])
-
-
-
 }
+
 }
 
 function markGender (){
@@ -653,6 +663,7 @@ function markCustome(){
   else if(document.getElementsByClassName('masculine')[0]){
     document.getElementsByClassName('masculine')[0].innerHTML = html_word
   }
+  splitTranslation()
 }
 
 function markVerbEnding(){
@@ -699,6 +710,7 @@ function unMark(){
     document.getElementsByClassName('plural')[0].style.display='none'
   }
   document.getElementById('ribbon').className="";
+  splitTranslation()
 }
 
 function displaypPlural(){
@@ -884,20 +896,15 @@ function prepExtraOptionsMenu(){
 
 
 
+if(window.checkedEX  === undefined){
+  window.checkedEX =  config['defaultExtraExamples']
+    checkExtraExamplesBox(window.checkedEX);
 
-  checkEX = document.getElementById('oEX');
-  if (window.checkedEX  === undefined ){
-    window.checkedEX = config['defaultExtraExamples'];
-    checkEX.checked = config['defaultExtraExamples'];
-  }
-  else{
-    if( bank == null || bank_length == 1){
-      window.checkedEX = false;
-      checkEX.checked = false;
-    }
-  }
+}
+else{
   checkExtraExamplesBox(window.checkedEX);
-  checkEX.checked = window.checkedEX
+}
+
   checkEX.addEventListener('change', function() {
       window.checkedEX = checkEX.checked;
       checkExtraExamplesBox(checkEX.checked);
@@ -953,13 +960,18 @@ function checkPOSBox(checker) {
 
 
 function checkExtraExamplesBox(checker) {
-
+  checkEX = document.getElementById('oEX');
     if(checker == true) {
-        // console.log('true')
-          if (document.getElementById('exBank').innerHTML == ""){
-            checkEX.checker = false;
+          if (bank == null || bank_length == 1){
+            checkEX.checked  = false;
+            disableMenuOption("oEX");
+            document.getElementById("previousIcon").style.display = "none";
+            document.getElementById("nxtIcon").style.display = "none";
+            document.getElementById("noOfEx").style.display = "none";
+            document.getElementById("frenchExamble").style.display = "block";
           }
           else{
+            checkEX.checked  = true;
             document.getElementById("previousIcon").style.display = "inline-block";
             document.getElementById("nxtIcon").style.display = "inline-block";
             document.getElementById("noOfEx").style.display = "block";
@@ -968,7 +980,7 @@ function checkExtraExamplesBox(checker) {
           }
 
     } else if (checker == false) {
-
+          checkEX.checked  = false;
           document.getElementById("previousIcon").style.display = "none";
           document.getElementById("nxtIcon").style.display = "none";
           document.getElementById("noOfEx").style.display = "none";
@@ -1031,18 +1043,33 @@ function splitTranslation(){
   parts.forEach((part, i) => {
     part = part.trim()
     if (part.includes('(')){
-      part = "<span class='translation__word translation__word--note'>"+part.replace('(','').replace(')','')+"<span/>"
+      part = "<span class=' translation__word translation__word--note'>"+part.replace('(','').replace(')','')+"<span/>"
 
     }
     else{
-      part = "<span class='translation__word'>"+part+"<span/>"
+      part = "<span class=' translation__word'>"+part+"<span/>"
 
     }
     document.getElementsByClassName('translation')[0].innerHTML += part
+    document.getElementsByClassName('translation')[0].classList.add('translationText')
   });
 
 
 }
+
+function prepPhrases(){
+  if (type.includes('phrase')){
+    document.getElementById('phrase').innerHTML= `
+    <a id="yg-widget-0" class="youglish-widget" data-query="`+word.replaceAll(" ","%20")+`"data-lang="french" data-components="80"   data-rest-mode="1"  rel="nofollow" </a>
+    `
+    document.getElementsByClassName('typed')[0].style.display='none'
+
+
+  }
+
+
+}
+
 
 
 /***************************************/
@@ -1059,14 +1086,14 @@ prepAttatchmentsMenu()
 prepExtraOptionsMenu()
 prepMainMenu()
 splitTranslation()
+prepPhrases()
 
 
 /***************************************/
 
 function anotherExample(next)
 {
-
-current_index+=next;
+  current_index+=next;
   indexOnScreen+=next;
   if(indexOnScreen > bank_length){
     indexOnScreen = 1
@@ -1075,16 +1102,18 @@ current_index+=next;
        indexOnScreen = bank_length
  }
   document.getElementById('noOfEx').innerHTML = "<br> example "+indexOnScreen+ " of "+ bank_length
-  window.window += next
   if (current_index == bank_length ){
     current_index = 0
   }
   else if (current_index == (-1)){
     current_index = bank_length-1
   }
+
     markFrenchWordInTheExample(bank[current_index]['fr'] , bank[current_index]['en'])
-    document.getElementById('frenchExamble').innerHTML = bank[current_index]['fr']
-    document.getElementById('exampleSound').childNodes[0].href='javascript:pycmd("ankiplay'+ bank[current_index]['audio']+'");';
-    // document.getElementById('exampleSound').childNodes[1].innerHTML = '[sound:'+ bank[current_index]['audio']+"]"
+    document.getElementById('exampleSound').innerHTML = "<span> <audio preload='none' style='margin-button:-20px;' controls ><source type='audio/mp3' src="+bank[current_index]['audio']+" /></span>"
+
+
+
+    // document.getElementById('exampleSound').childNodes[1].innerHTML = '[sound:'+ bank[current_index]['audio']+']'
 
 }
