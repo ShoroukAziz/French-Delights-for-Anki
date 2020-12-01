@@ -1,0 +1,375 @@
+<link rel="stylesheet" type="text/css" href="_french-delights/CSS/french-delights.css"/>
+
+<div  id="wrapper">
+<section class=" flipInX"  >
+<div id="container" >
+
+
+    <div id="ribbon" ></div>
+    <div class="type-corner "><span class="type-corner__text  type">{{type}}</span></div>
+
+
+
+    {{#video}}
+    <iframe src="silence.mp3" type="audio/mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+    <div id="imgcontainer" >
+        <video id="vid" width="320" height="240" preload="true"   controls  >
+          <source src="{{video}}" type="video/ogg">
+        </video>
+    </div>
+  {{/video}}
+
+  {{^video}}
+	<div id="imgcontainer">{{picture}}
+
+
+</div>
+
+
+
+  {{/video}}
+
+    {{#conj}}
+    <div id="word"  class="{{group}} word ">
+    {{word}}
+    </div>
+    {{/conj}}
+
+    {{^conj}}
+
+		<div   class="word ">
+			{{^feminin version}}
+				<span id="word"> {{word}} </span>
+			{{/feminin version}}
+
+			{{#feminin version}}
+			<span class='masculine'> <span id="word"> {{word}}</span>
+      </span>   &nbsp<span class='feminin'>  {{feminin version}}</span>
+			{{/feminin version}}
+
+      {{#plural}}
+      <span id="plural" class="plural" style="display:none;">  {{plural}} </span>
+      {{/plural}}
+    </div>
+
+      {{/conj}}
+
+
+
+<div  id="conjugations" class="verbBackground">
+</div>
+
+<p class="ipa" >{{IPA}}</p>
+
+  <img style="display:inline-block ; width:15px !important" class="translation__icon"  src="_french-delights/assets/icons/engico.png"/>
+<div style="display:inline-block" id="translation" class= "translation boldClass" >
+
+<span  class="translationText">{{translation}}</span> 
+</div> {{#translation note}}
+<span class=' translation-note translation translation__word translation__word--note'>{{translation note}}</span>
+{{/translation note}}
+{{#word note}}
+<span class=' word-note translation translation__word translation__word--note'>{{word note}}</span>
+{{/word note}}
+
+{{#french example}}
+<hr class="separator separator--line" />
+{{/french example}}
+
+<img id="previousIcon" class="examples__icon examples__icon--previous" onclick="anotherExample(-1)" style="" src="_french-delights/assets/icons/_arrow_left.png" />
+<div style="display:inline-block" id="frenchExamble" class="examples ">
+  {{french example}}
+</div>
+<img id="nxtIcon" class="examples__icon examples__icon--next" onclick="anotherExample(1)"  src="_french-delights/assets/icons/_arrow_right.png" />
+<div id="noOfEx"> </div>
+{{#english example}}
+<hr class="separator separator--line" />
+{{/english example}}
+<div id="englishExample" class="examples ">{{english example}}</div>
+
+<div id ='phrase'>
+    <script async src="https://youglish.com/public/emb/widget.js" charset="utf-8"></script>
+
+</div>
+
+{{#sound}}
+<hr class="separator separator--line" />
+{{/sound}}
+
+{{^sound}}
+<br>
+{{/sound}}
+
+{{#feminin pronunciation}}
+<table id="buttonsContainer" class= "sound-buttons-container" >
+<tr>
+
+  <th id="wordSound" class="button soundLink">{{sound}}</th>
+
+  <th id="femeSound" class="button soundLink">{{feminin pronunciation}}</th>
+
+  <th id="exampleSound" class="button soundLink">{{exSound}}</th>
+<tr>
+</table>
+{{/feminin pronunciation}}
+
+{{^feminin pronunciation}}
+
+  <span id="wordSound" class="button soundLink">{{sound}}</span>
+  <span id="exampleSound" class="button soundLink">{{exSound}}</span>
+{{/feminin pronunciation}}
+
+
+
+
+
+
+<div class="attachments">
+
+  <div name="extraOptions" style="display:none" id="extraDiv">
+  <button  type='button' class=' card-attachment__title  card-attachment__title--extra'> etymology  &nbsp
+    <img  class='card-attachment__title__icon card-attachment__title__icon--small' src='_french-delights/assets/icons/_rooticon.png'/>&nbsp and extra  </button>
+  <div id="extra" class="card-attachment__body card-attachment__body--extra" >{{extra}}</div>
+  </div>
+  <div name="extraOptions" style="display:none" id="mnemonicDiv">
+  <button  type='button' class=' card-attachment__title card-attachment__title--mnemonic '>
+  <img  class='card-attachment__title__icon card-attachment__title__icon--med' src='_french-delights/assets/icons/_brain1.png'/>&nbsp &nbsp mnemonic </button>
+  <div id ="mnemonic" class ='card-attachment__body card-attachment__body--mnemonic' > {{mnemonic}} </div>
+  </div>
+  <div name="extraOptions" style="display:none" id="tagsDiv">
+  <button  type='button' class=' card-attachment__title card-attachment__title--tags '>
+  <img class='card-attachment__title__icon card-attachment__title__icon--med' src='_french-delights/assets/icons/_ptag.png'/>&nbsp &nbsp tags </button>
+  <div id="tagsText" class ='card-attachment__body card-attachment__body--tags'  >{{Tags}}</div>
+  </div>
+
+
+
+</div>
+</div>
+
+<div>
+  <div class= "card-maturity">
+  <img style="height: 40px !important;" id="star1" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
+  <img style="height: 40px !important;" id="star2" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
+  <img style="height: 40px !important;" id="star3" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
+  <img style="height: 40px !important;" id="nostar1" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
+  <img style="height: 40px !important;" id="nostar2" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
+  <img style="height: 40px !important;" id="nostar3" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
+  </div>
+
+  <div class='links'>
+    <div class="link link1"> <a class="text"  href="https://www.collinsdictionary.com/dictionary/french-english/{{text:word}}"> Collins</a> </div>
+    <div class="link link2" > <a class="text"  href="https://en.wiktionary.org/wiki/{{text:word}}#French"> wiktionary</a> </div>
+    <div class="link link3" > <a class="text"  href="https://www.linguee.com/english-french/search?source=auto&query={{text:word}}"> linguee</a> </div>
+    <div class="link link4" > <a class="text"  href="https://www.google.com/search?q={{text:word}}"> Google</a> </div>
+<div class="link link5" > <a class="text"  href="https://youglish.com/pronounce/{{text:word}}/french?"> Youglish</a> </div>
+
+    </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+
+<div class="template">
+
+<div class="menus">
+  <div class='menu__head__icon--open'>
+  <img class="menu__head__icon--open" src="_french-delights/assets/icons/menu.png">
+  </div>
+
+  <div class="menu_hidable">
+
+  <div class="menu-head">
+  <img class="menu__head__icon" src="_french-delights/assets/icons/close.png">
+  Options Menu
+  </div>
+
+  <div class="menu menu--1">
+
+  <label class="highlightOption">
+  <input  class="option-input " id="oIPA" type="checkbox"  value="showAPI"  ></input>
+  IPA
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input " id="oPOS" type="checkbox"  value="showPOS" >Part of Speech</input>
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input "  id="oEX" type="checkbox"  value="showEX" >extra examples</input>
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input "  id="oMut" type="checkbox"  value="showMaturity" >Card Maturity</input>
+  </label>
+
+  </div>
+
+  <div class="menu ">
+
+  <p class="menu__title"> Highlighting Options </p>
+
+  <label class="highlightOption">
+  <input class="option-input radio" id="highlightNone" type="radio" name='highilightingOptions' " >None</input>
+  </label>
+
+  <label class="highlightOption">
+  <input  class="option-input radio" id="highlightRoots" type="radio" name='highilightingOptions'" >Roots</input>
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input radio" id="highlightCustom" type="radio" name='highilightingOptions' ">Custom</input>
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input radio"  id="highlightGender" type="radio" name='highilightingOptions' ">Gender</input>
+  </label>
+
+
+  <label class="highlightOption">
+  <input class="option-input radio" id="highlightPlural" type="radio" name='highilightingOptions' >Plural</input>
+  </label>
+
+  </div>
+
+  <p class="menu__title">
+  Note Extras
+  </p>
+  <div class="menu menu--2'">
+  <img name="options" id="noteOnly" class='menu2-icon' src='_french-delights/assets/icons/_note.png'/>
+  {{#extra}}
+  <img name="options" id="root" class='menu2-icon' src='_french-delights/assets/icons/_rooticon.png'/>
+  {{/extra}}
+  {{^extra}}
+  <img  class='menu2-icon' src='_french-delights/assets/icons/_rooticonoff.png'/>
+  {{/extra}}
+
+
+  {{#mnemonic}}
+  <img name="options" id="brain" class='menu2-icon' src='_french-delights/assets/icons/_brain1.png'/>
+  {{/mnemonic}}
+  {{^mnemonic}}
+  <img  class='menu2-icon' src='_french-delights/assets/icons/_brain1off.png'/>
+  {{/mnemonic}}
+
+
+  {{#Tags}}
+  <img name="options" id="tagsico" class='menu2-icon' src='_french-delights/assets/icons/_ptag.png'/>{{/Tags}}
+  {{^Tags}}
+  <img  class='menu2-icon' src='_french-delights/assets/icons/_ptag.pngoff.png'/>{{/Tags}}
+
+  </div>
+{{#conj}}
+  <div class="menu menu--4">
+  <p class="menu__title">
+  Verbs
+  </p>
+  <label class="highlightOption">
+  <input  class="option-input " id="CHECKconj" type="checkbox"  value="showCONJ"  >Conjugations</input>
+  </label>
+  </div>
+  {{/conj}}
+
+
+  </div>
+</div>
+
+<div class="conj-menus hidden">
+
+  <div class="menu ">
+
+  <p class="menu__title"> Indicatif </p>
+
+  <label class="highlightOption">
+  <input class="option-input radio" id="c1" type="radio" name="conj-radio" value="higlightRoots" >Présent</input>
+  </label>
+
+  <label class="highlightOption">
+  <input  class="option-input radio" id="c2" type="radio" name="conj-radio" value="higlightRoots" >Imparfait</input>
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input radio" id="c3" type="radio" name="conj-radio" value="higlightSpelling">Futur</input>
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input radio"  id="c4" type="radio" name="conj-radio" value="highlightGender">Passé simple</input>
+  </label>
+
+
+  <label class="highlightOption">
+  <input class="option-input radio" id="c5" type="radio" name="conj-radio" value="highlightGender">Passé composé</input>
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input radio" id="c6" type="radio" name="conj-radio" value="highlightGender">Plus-que-parfait</input>
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input radio" id="c7" type="radio" name="conj-radio" value="highlightGender">Passé antérieur</input>
+  </label>
+
+  <label class="highlightOption">
+  <input class="option-input radio" id="c8" type="radio" name="conj-radio" value="highlightGender">Futur antérieur</input>
+  </label>
+
+    <p class="menu__title"> Subjonctif </p>
+
+    <label class="highlightOption">
+    <input class="option-input radio" id="c9" type="radio" name="conj-radio" value="highlightGender">Présent</input>
+    </label>
+
+    <label class="highlightOption">
+    <input class="option-input radio" id="c10" type="radio" name="conj-radio" value="highlightGender">Imparfait</input>
+    </label>
+
+    <label class="highlightOption">
+    <input class="option-input radio" id="c11" type="radio" name="conj-radio" value="highlightGender">Plus-que-parfait</input>
+    </label>
+
+    <label class="highlightOption">
+    <input class="option-input radio" id="c12" type="radio" name="conj-radio" value="highlightGender">Passé</input>
+    </label>
+
+    <p class="menu__title"> Conditionnel </p>
+
+    <label class="highlightOption">
+    <input class="option-input radio" id="c13" type="radio" name="conj-radio" value="highlightGender">Présent</input>
+    </label>
+
+    <label class="highlightOption">
+    <input class="option-input radio" id="c14" type="radio" name="conj-radio" value="highlightGender">Passé</input>
+    </label>
+
+    <p class="menu__title"> Impératif </p>
+
+    <label class="highlightOption">
+    <input class="option-input radio" id="c15" type="radio" name="conj-radio" value="highlightGender">Présent</input>
+    </label>
+
+    <label class="highlightOption">
+    <input class="option-input radio" id="c16" type="radio" name="conj-radio" value="highlightGender">Passé</input>
+    </label>
+
+
+  </div>
+
+</div>
+
+  </div>
+</div>
+<div class="hidden-fields">
+<div id="exBank"> {{Bank}}</div>
+<div id="ivl" >{{info-Ivl:}}</div>
+<div id="conjugationsDict">{{conj}}</div>
+<div id="group">{{group}}</div>
+</div>
+
+<script type="text/javascript" src="_french-delights/JavaScript/main.js"></script>
+<script type="text/javascript" src="_french-delights/JavaScript/verb_conj.js"></script>

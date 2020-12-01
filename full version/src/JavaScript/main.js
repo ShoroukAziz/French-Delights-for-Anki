@@ -1,10 +1,11 @@
 /*jshint esversion: 8 */
+
 config = {
   "defaultHighlightingSelection": "highlightNone",
   "defaultExtraSelection": "noteOnly",
   "interestInArabic": true,
-  "defaultIPA": false,
-  "defaultPOS": false,
+  "defaultIPA": true,
+  "defaultPOS": true,
   "defaultExtraExamples": true,
   "defaultmaturityState": true
 };
@@ -24,18 +25,31 @@ String.prototype.replaceAll = function (strReplace, strWith) {
   return this.replace(reg, strWith);
 };
 
+/******************************************/
 
 
 Utils = class {
+  /**
+   * takes the id of an HTML element and returns the inner HTML of that element
+  */
   HTMLId(id) {
     return document.getElementById(id).innerHTML.trim();
   }
+  /**
+   * takes the class name of an HTML element and returns the inner HTML of that element
+  */
   HTMLClass(className) {
     return document.getElementsByClassName(className)[0].innerHTML.trim();
   }
+  /**
+   * takes the id of an HTML element and returns the inner text of that element
+  */
   textId(id) {
     return document.getElementById(id).innerText.trim();
   }
+  /**
+   * takes the class name of an HTML element and returns the inner text of that element
+  */
   textClass(className) {
     return document.getElementsByClassName(className)[0].innerText.trim();
   }
@@ -53,12 +67,35 @@ Note = class {
     this.word = utils.textId('word');
     this.html_translation = utils.HTMLClass('translationText');
     this.translation = utils.textClass('translationText');
-    this.translationPrats = this.translation.split(',');
-    this.translationWords = [];
+    this.translationWords = this.translation.split(',');
     this.isVerb = false;
-    this.type = utils.textClass('type');
     this.frenchExample = utils.HTMLId('frenchExamble');
     this.englishExample = utils.HTMLId('englishExample');
+    try {
+      this.type = utils.textClass('type');
+      if (this.type == "") this.type = "na";
+    } catch (error) {
+      this.translationNote = "na";
+    }
+    try {
+      this.translationNote = utils.textClass('translation-note');
+      if (this.translationNote == "") this.translationNote = null;
+    } catch (error) {
+      this.translationNote = null;
+    }
+    try {
+      this.wordNote = utils.textClass('word-note');
+      if (this.wordNote == "") this.wordNote = null;
+    } catch (error) {
+      this.wordNote = null;
+    }
+    
+    try {
+      this.ipa = utils.textClass('ipa');
+      if (this.ipa == "") this.ipa = null;
+    } catch (error) {
+      this.ipa = null;
+    }
 
     try {
       this.fem = utils.textClass('feminin');
@@ -89,18 +126,6 @@ Note = class {
 
   }
 
-  getTranslationWords() {
-    var _this = this;
-    _this.translationPrats.forEach(
-      function (item) {
-        if (!item.includes(')')) {
-          _this.translationWords.push(item.trim());
-        }
-      }
-    );
-    return _this.translationWords;
-  }
-
   isAVerb(){
     var _this = this;
     if (_this.type.includes('verb') && !note.type.includes('adverb')) {
@@ -112,7 +137,7 @@ Note = class {
 };
 
 note = new Note();
-note.getTranslationWords();
+// note.getTranslationWords();
 note.isAVerb();
 
 
@@ -121,31 +146,28 @@ NoteStyleManipulator = class {
   constructor(note) {
     this.note = note;
   }
-
+  /**
+   * Highlits the word in the French example and the translation in the E nglish example
+  */
   markFrenchWordInTheExample(example, englishEx) {
-    document.querySelector('#frenchExamble').innerHTML = example.replaceAll(note.word,`<span class='example__higlighted-word'>" ${ note.word }"</span>` );
+    document.querySelector('#frenchExamble').innerHTML = example.replaceAll(note.word,`<span class='example__higlighted-word'> ${ note.word }</span>` );
     document.querySelector('#englishExample').innerHTML = englishEx;
 
-    let parts = this.note.translation.split(",");
+    let parts = this.note.translationWords;
     parts.forEach((part, i) => {
       part = part.trim();
-      if (!part.includes('(')) {
         if (englishEx.toLowerCase().includes(part.toLowerCase())) {
           document.querySelector('#englishExample').innerHTML = englishEx.replaceAll(part, `<span class='example__higlighted-word'>${ part }</span>`);
         }
-      }
     });
     if (note.isVerb) {
       parts.forEach((part, i) => {
-        if (part.includes('to') || part.includes('for')) {
-          part = part.replace('to', '').trim();
-          part = part.replace('for', '').trim();
-          if (!part.includes('(')) {
+        if (part.includes('to ') || part.includes('for ')) {
+          part = part.replace('to ', '').trim();
+          part = part.replace('for ', '').trim();
             if (englishEx.includes(part)) {
               document.querySelector('#englishExample').innerHTML = englishEx.replaceAll(part, "<span class='example__higlighted-word'>" + part + "</span>");
             }
-          }
-
         }
       });
 
@@ -159,7 +181,7 @@ NoteStyleManipulator = class {
 
     let soundFieldsIds = ['wordSound', 'exampleSound', 'femeSound', 'pSound'];
     soundFieldsIds.forEach(function (item) {
-      if (document.querySelector(item)) {
+      if (document.querySelector("#"+item)) {
         if (document.getElementById(item).innerHTML.endsWith('<br>'))
           document.getElementById(item).innerHTML = document.getElementById(item).innerHTML.slice(0, -4);
       }
@@ -205,16 +227,10 @@ NoteStyleManipulator = class {
 
   splitTranslation() {
 
-    let parts = note.translationPrats;
+    let parts = note.translationWords;
     document.querySelector('.translation').innerHTML = "";
     parts.forEach((part, i) => {
-      if (part.includes('(')) {
-        part = `<span class=' translation__word translation__word--note'> ${ part.replace('(', '').replace(')', '') } <span/>`;
-
-      } else {
-        part = `<span class=' translation__word'>${ part }<span/>`;
-
-      }
+      part = `<span class=' translation__word'>${ part }<span/>`;
       document.querySelector('.translation').innerHTML += part;
       document.querySelector('.translation').classList.add('translationText');
     });
@@ -224,11 +240,11 @@ NoteStyleManipulator = class {
 
 
   changeReplaybutton() {
-    let elements = document.querySelectorAll('.soundLink');
+    let elements = document.querySelectorAll('.playImage');
     for (var i = 0; i < elements.length; i++) {
       elements[i].innerHTML = `
 
-    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480;" xml:space="preserve">
+    <svg version="1.1"id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480;" xml:space="preserve">
     <path style="fill:#455A64;" d="M278.944,17.577c-5.568-2.656-12.128-1.952-16.928,1.92L106.368,144.009H32
     	c-17.632,0-32,14.368-32,32v128c0,17.664,14.368,32,32,32h74.368l155.616,124.512c2.912,2.304,6.464,3.488,10.016,3.488
     	c2.368,0,4.736-0.544,6.944-1.6c5.536-2.656,9.056-8.256,9.056-14.4v-416C288,25.865,284.48,20.265,278.944,17.577z"></path>
@@ -278,7 +294,9 @@ NoteStyleManipulator = class {
 
   }
 
-
+  /**
+   *  If it's a phrase card add Youglish widget to it
+   */
   prepPhrases() {
     if (note.type.includes('phrase')) {
       document.querySelector('#phrase').innerHTML = `
@@ -486,8 +504,6 @@ ChangeDetector = class {
 
 
   hasAFlippedLetter(word, translation) {
-    word = this.word;
-    translation = this.translation;
     if (word.length == translation.length) {
       var loc, c = -1;
       for (var i = 0; i < word.length; i++) {
@@ -630,12 +646,12 @@ Marker = class {
     var styleStart1 = `<span style="color:${color1}"><u>`;
     var styleEnd = '</u></span>';
 
-    theWordP1 = theWord.slice(0, -part1.length);
-    highlitedWord = theWordP1 + styleStart1 + part1 + styleEnd;
+    var theWordP1 = theWord.slice(0, -part1.length);
+    var highlitedWord = theWordP1 + styleStart1 + part1 + styleEnd;
 
 
-    theTransP1 = theTranslation.slice(0, -part2.length);
-    highlitedTrans = theTransP1 + styleStart1 + part2 + styleEnd;
+    var theTransP1 = theTranslation.slice(0, -part2.length);
+    var highlitedTrans = theTransP1 + styleStart1 + part2 + styleEnd;
 
 
     return [highlitedWord, highlitedTrans];
@@ -895,7 +911,7 @@ Marker = class {
 
     if (note.type.includes('noun') && !(note.type.includes('fem') && note.type.includes('mas'))) {
 
-      var pluralText = word2 + "&nbsp <img class='plural-arrow-icon' src='arrow1.png'/>&nbsp" + pluralText;
+      var pluralText = word2 + "&nbsp <img class='plural-arrow-icon' src='_french-delights/assets/icons/arrow.png'/>&nbsp" + pluralText;
       document.getElementsByClassName("word")[0].innerHTML = pluralText;
     } else {
       document.querySelector('#plural').innerHTML = pluralText;
@@ -931,7 +947,7 @@ Marker = class {
     document.querySelector("#ribbon").className = "";
     document.querySelector('.translationText').innerHTML = note.translation;
 
-    if (document.querySelector('.word') && (note.type.includes('noun') && !(note.type.includes('fem') && note.type.includes('mas')))) {
+    if (document.querySelector('.word') && (note.type.includes('noun') && !(note.fem) && !(note.type.includes('fem') && note.type.includes('mas')))) {
       document.querySelector('.word').innerHTML = note.word;
     }
     if (document.querySelector('#word'))
@@ -1083,7 +1099,7 @@ NoteExtras = class {
       window.menuStatus = 'open';
     } else {
 
-      document.querySelector('.menus').style.backgroundColor = "#f3dcf5d4";
+      document.querySelector('.menus').style.backgroundColor = "#f1f1f1";
       document.querySelector('.menu_hidable').style.display = "block";
       document.querySelector(".menu__head__icon--open").style.display = "none";
       window.menuStatus = 'close';
@@ -1217,30 +1233,40 @@ NoteExtras = class {
   prepExtraOptionsMenu() {
     var _this = this;
     let checkIPA = document.querySelector('#oIPA');
-    if (window.checkedIPA === undefined) {
-      window.checkedIPA = config.defaultIPA;
-      checkIPA.checked = config.defaultIPA;
+    if(this.note.ipa == null){
+      utils.disableMenuOption("oIPA");
     }
-    _this.checkIPABox(window.checkedIPA);
-    checkIPA.checked = window.checkedIPA;
-    checkIPA.addEventListener('change', function () {
-      window.checkedIPA = checkIPA.checked;
-      _this.checkIPABox(checkIPA.checked);
-    });
-
-
+    else{
+      if (window.checkedIPA === undefined) {
+        window.checkedIPA = config.defaultIPA;
+        checkIPA.checked = config.defaultIPA;
+      }
+      _this.checkIPABox(window.checkedIPA);
+      checkIPA.checked = window.checkedIPA;
+      checkIPA.addEventListener('change', function () {
+        window.checkedIPA = checkIPA.checked;
+        _this.checkIPABox(checkIPA.checked);
+      });
+  
+    }
 
     let checkPOS = document.querySelector('#oPOS');
-    if (window.checkedPOS === undefined) {
-      window.checkedPOS = config.defaultPOS;
-      checkPOS.checked = config.defaultPOS;
+    if(this.note.type == "na"){
+      utils.disableMenuOption("oPOS");
     }
-    _this.checkPOSBox(window.checkedPOS);
-    checkPOS.checked = window.checkedPOS;
-    checkPOS.addEventListener('change', function () {
-      window.checkedPOS = checkPOS.checked;
-      _this.checkPOSBox(checkPOS.checked);
-    });
+    else{
+      if (window.checkedPOS === undefined) {
+        window.checkedPOS = config.defaultPOS;
+        checkPOS.checked = config.defaultPOS;
+      }
+      _this.checkPOSBox(window.checkedPOS);
+      checkPOS.checked = window.checkedPOS;
+      checkPOS.addEventListener('change', function () {
+        window.checkedPOS = checkPOS.checked;
+        _this.checkPOSBox(checkPOS.checked);
+      });
+    }
+    
 
 
     let checkEX = document.querySelector('#oEX');
@@ -1318,7 +1344,7 @@ function addAPlayButton(src) {
   <audio  autoplay id="player" src="${src}"></audio>
 
        <a class="replay-button" onclick="document.querySelector('#player').play()">
-         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480;" xml:space="preserve">
+         <svg width="40px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480;" xml:space="preserve">
          <path style="fill:#455A64;" d="M278.944,17.577c-5.568-2.656-12.128-1.952-16.928,1.92L106.368,144.009H32
            c-17.632,0-32,14.368-32,32v128c0,17.664,14.368,32,32,32h74.368l155.616,124.512c2.912,2.304,6.464,3.488,10.016,3.488
            c2.368,0,4.736-0.544,6.944-1.6c5.536-2.656,9.056-8.256,9.056-14.4v-416C288,25.865,284.48,20.265,278.944,17.577z"></path>

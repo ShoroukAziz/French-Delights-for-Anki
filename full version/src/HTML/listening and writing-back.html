@@ -1,12 +1,15 @@
+<link rel="stylesheet" type="text/css" href="_french-delights/CSS/french-delights.css"/>
 
-<link rel="stylesheet" type="text/css" href="_french-delights/CSS/french-delights.css">
-<script type="text/javascript" src="_french-delights/JavaScript/main.js"></script>
-<script type="text/javascript" src="_french-delights/JavaScript/verb_conj.js"></script>
 
-<div id="wrapper">
-  <div id="container" >
+<div  id="wrapper">
+<section class="flipInX"  >
+<div id="container" >
+
+
     <div id="ribbon" ></div>
     <div class="type-corner "><span class="type-corner__text  type">{{type}}</span></div>
+
+
 
     {{#video}}
     <iframe src="silence.mp3" type="audio/mp3" allow="autoplay" id="audio" style="display:none"></iframe>
@@ -18,7 +21,13 @@
   {{/video}}
 
   {{^video}}
-	<div id="imgcontainer">{{picture}}</div>
+	<div id="imgcontainer">{{picture}}
+
+
+</div>
+
+
+
   {{/video}}
 
     {{#conj}}
@@ -29,7 +38,7 @@
 
     {{^conj}}
 
-		<div   class="word">
+		<div   class="word ">
 			{{^feminin version}}
 				<span id="word"> {{word}}</span>
 			{{/feminin version}}
@@ -45,18 +54,25 @@
     </div>
 
       {{/conj}}
+{{type:word}}
 
-<span class="typed">{{type:word}}</span>
+<span class="typed"></span>
 <div  id="conjugations" class="verbBackground">
 </div>
 
-<p class="ipa" >{{IPA}}</p>
+<p class="ipa" >{{IPA}} </p>
 
-<div id="translation" class= "translation boldClass" >
-  <img class="translation__icon"  src="_french-delights/assets/icons/engico.png"/>
+  <img style="display:inline-block; width:15px !important" class="translation__icon"  src="_french-delights/assets/icons/engico.png"/>
+<div style="display:inline-block" id="translation" class= "translation boldClass" >
+
 <span  class="translationText">{{translation}} </span>
-</div>
-
+</div> 
+{{#translation note}}
+<span class=' translation-note translation translation__word translation__word--note'>{{translation note}}</span>
+{{/translation note}}
+{{#word note}}
+<span class=' word-note translation translation__word translation__word--note'>{{word note}}</span>
+{{/word note}}
 {{#french example}}
 <hr class="separator separator--line" />
 {{/french example}}
@@ -71,6 +87,11 @@
 <hr class="separator separator--line" />
 {{/english example}}
 <div id="englishExample" class="examples ">{{english example}}</div>
+
+<div id ='phrase'>
+    <script async src="https://youglish.com/public/emb/widget.js" charset="utf-8"></script>
+
+</div>
 
 {{#sound}}
 <hr class="separator separator--line" />
@@ -127,23 +148,37 @@
 </div>
 </div>
 
-
-<div class="template">
+<div>
   <div class= "card-maturity">
-  <img id="star1" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
-  <img id="star2" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
-  <img id="star3" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
-  <img id="nostar1" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
-  <img id="nostar2" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
-  <img id="nostar3" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
-  </div>
+    <img style="height: 40px !important;" id="star1" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
+    <img style="height: 40px !important;" id="star2" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
+    <img style="height: 40px !important;" id="star3" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star.png">
+    <img style="height: 40px !important;" id="nostar1" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
+    <img style="height: 40px !important;" id="nostar2" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
+    <img style="height: 40px !important;" id="nostar3" class="card-maturity__star-icon" src="_french-delights/assets/icons/_star_dim.png">
+    </div>
+  
 
   <div class='links'>
     <div class="link link1"> <a class="text"  href="https://www.collinsdictionary.com/dictionary/french-english/{{text:word}}"> Collins</a> </div>
     <div class="link link2" > <a class="text"  href="https://en.wiktionary.org/wiki/{{text:word}}#French"> wiktionary</a> </div>
     <div class="link link3" > <a class="text"  href="https://www.linguee.com/english-french/search?source=auto&query={{text:word}}"> linguee</a> </div>
     <div class="link link4" > <a class="text"  href="https://www.google.com/search?q={{text:word}}"> Google</a> </div>
+<div class="link link5" > <a class="text"  href="https://youglish.com/pronounce/{{text:word}}/french?"> Youglish</a> </div>
+
     </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+<div class="template">
+
 <div class="menus">
   <div class='menu__head__icon--open'>
   <img class="menu__head__icon--open" src="_french-delights/assets/icons/menu.png">
@@ -228,7 +263,7 @@
   {{#Tags}}
   <img name="options" id="tagsico" class='menu2-icon' src='_french-delights/assets/icons/_ptag.png'/>{{/Tags}}
   {{^Tags}}
-  <img  class='menu2-icon' src='_french-delights/assets/icons/assets/icons/_ptag.pngoff.png'/>{{/Tags}}
+  <img  class='menu2-icon' src='_french-delights/assets/icons/_ptag.pngoff.png'/>{{/Tags}}
 
   </div>
 {{#conj}}
@@ -323,18 +358,20 @@
     <input class="option-input radio" id="c16" type="radio" name="conj-radio" value="highlightGender">Passé</input>
     </label>
 
-
   </div>
 
 </div>
 
   </div>
-
 </div>
-
 <div class="hidden-fields">
 <div id="exBank"> {{Bank}}</div>
-<div id="ivl" >{{info::Ivl}}</div>
+<div id="ivl" >{{info-Ivl:}}</div>
 <div id="conjugationsDict">{{conj}}</div>
 <div id="group">{{group}}</div>
 </div>
+
+
+
+<script type="text/javascript" src="_french-delights/JavaScript/main.js"></script>
+<script type="text/javascript" src="_french-delights/JavaScript/verb_conj.js"></script>

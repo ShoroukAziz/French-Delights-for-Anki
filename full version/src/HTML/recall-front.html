@@ -1,0 +1,29 @@
+<section class="fadeInDown "  >
+
+    <div class ="frontCard"   style="background-color: #fff;">
+    
+    <div id="question" style=" font-family: myfont ; font-weight:bold">How do we say the french word for ?</div>
+    
+    <div id="imgcontainer">{{picture}}</div>
+    <div style="margin:15px;">
+    <img  style="display:inline-block ;width:15px !important; height:auto;border:0px ; margin-right:4px" src="_french-delights/assets/icons/engico.png">
+    <span  class= "translation translation--front">
+    {{translation}}
+    </span>
+    {{#translation note}}
+    <span class=' translation-note translation translation__word translation__word--note'>{{translation note}}</span>
+    {{/translation note}}
+    {{#word note}}
+    <span class=' word-note translation translation__word translation__word--note'>{{word note}}</span>
+    {{/word note}}
+    <span style=" font-family: myfont ; font-weight:bold" id="question-p2"> </span>
+    </span>
+    </div>
+    <div class="englishEx boldClass" style="font-size:25px; font-family:myfont" >{{english example}} </div>
+    
+    <div class="type" style="display:none">{{type}}</div>
+    <link rel="stylesheet" type="text/css" href="_french-delights/CSS/french-delights.css">
+    
+    <script type="text/javascript" src="_french-delights/JavaScript/front-recall.js"></script>
+    
+    </section>
